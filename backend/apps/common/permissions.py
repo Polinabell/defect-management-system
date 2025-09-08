@@ -1,227 +1,144 @@
 """
-Общие permissions для всех приложений
+Кастомные права доступа для API
 """
 
 from rest_framework import permissions
-from rest_framework.request import Request
-from rest_framework.views import APIView
-from typing import Any
+from rest_framework.permissions import BasePermission
 
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsProjectMember(BasePermission):
     """
-    Разрешение только владельцу объекта редактировать его,
-    остальным только чтение
+    Право доступа: пользователь является участником проекта
     """
     
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
-        # Права на чтение разрешены для любого запроса,
-        # поэтому мы всегда разрешаем GET, HEAD или OPTIONS запросы.
-        if request.method in permissions.SAFE_METHODS:
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав на уровне объекта"""
+        # Для администраторов
+        if request.user.is_staff or getattr(request.user, 'is_admin', False):
             return True
         
-        # Права на запись только для владельца объекта.
-        return hasattr(obj, 'owner') and obj.owner == request.user
-
-
-class IsAuthorOrReadOnly(permissions.BasePermission):
-    """
-    Разрешение только автору объекта редактировать его,
-    остальным только чтение
-    """
-    
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
-        # Права на чтение разрешены для любого запроса
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        
-        # Права на запись только для автора объекта
-        return hasattr(obj, 'author') and obj.author == request.user
-
-
-class IsAdminOrReadOnly(permissions.BasePermission):
-    """
-    Разрешение только администраторам редактировать,
-    остальным только чтение
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        if request.method in permissions.SAFE_METHODS:
-            return request.user.is_authenticated
-        
-        return request.user.is_authenticated and request.user.is_staff
-
-
-class IsManagerOrReadOnly(permissions.BasePermission):
-    """
-    Разрешение менеджерам и администраторам редактировать,
-    остальным только чтение
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        if request.method in permissions.SAFE_METHODS:
-            return request.user.is_authenticated
-        
-        return (
-            request.user.is_authenticated and 
-            hasattr(request.user, 'role') and
-            request.user.role in ['admin', 'manager']
-        )
-
-
-class IsProjectMember(permissions.BasePermission):
-    """
-    Разрешение только участникам проекта
-    """
-    
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
-        if not request.user.is_authenticated:
-            return False
-        
-        # Если у объекта есть поле project
+        # Получаем проект из объекта
         if hasattr(obj, 'project'):
             project = obj.project
-        elif hasattr(obj, '__class__') and obj.__class__.__name__ == 'Project':
-            project = obj
+        elif hasattr(obj, 'defect'):
+            project = obj.defect.project
         else:
-            return False
+            project = obj
         
-        # Проверяем участие в проекте
-        return project.members.filter(id=request.user.id).exists()
+        # Проверяем является ли пользователь участником проекта
+        return project.is_member(request.user)
 
 
-class IsProjectManagerOrReadOnly(permissions.BasePermission):
+class IsDefectAssigneeOrAuthor(BasePermission):
     """
-    Разрешение менеджеру проекта редактировать,
-    участникам только чтение
+    Право доступа: пользователь является автором или исполнителем дефекта
     """
     
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав на уровне объекта"""
+        # Для администраторов
+        if request.user.is_staff or getattr(request.user, 'is_admin', False):
+            return True
+        
+        # Получаем дефект из объекта
+        if hasattr(obj, 'defect'):
+            defect = obj.defect
+        else:
+            defect = obj
+        
+        # Автор или исполнитель дефекта
+        if defect.author == request.user or defect.assignee == request.user:
+            return True
+        
+        # Менеджер проекта
+        if defect.project.manager == request.user:
+            return True
+        
+        return False
+
+
+class CanChangeDefectStatus(BasePermission):
+    """
+    Право доступа: может изменять статус дефекта
+    """
+    
+    def has_permission(self, request, view):
+        """Проверка общих прав"""
+        return request.user.is_authenticated
+    
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав на уровне объекта"""
+        # Для администраторов
+        if request.user.is_staff or getattr(request.user, 'is_admin', False):
+            return True
+        
+        # Получаем дефект
+        defect = obj
+        
+        # Менеджер проекта может изменять любые статусы
+        if defect.project.manager == request.user:
+            return True
+        
+        # Исполнитель может изменять определённые статусы
+        if defect.assignee == request.user:
+            return True
+        
+        # Автор может изменять только новые дефекты
+        if defect.author == request.user and defect.status == 'new':
+            return True
+        
+        return False
+
+
+class CanAssignDefects(BasePermission):
+    """
+    Право доступа: может назначать исполнителей дефектов
+    """
+    
+    def has_permission(self, request, view):
+        """Проверка общих прав"""
         if not request.user.is_authenticated:
             return False
         
-        # Получаем проект
-        if hasattr(obj, 'project'):
-            project = obj.project
-        elif hasattr(obj, '__class__') and obj.__class__.__name__ == 'Project':
-            project = obj
-        else:
+        # Только менеджеры и администраторы могут назначать
+        return (
+            request.user.is_staff or 
+            getattr(request.user, 'is_admin', False) or
+            getattr(request.user, 'role', '') == 'manager'
+        )
+
+
+class IsManagerOrAdmin(BasePermission):
+    """
+    Право доступа: только менеджеры и администраторы
+    """
+    
+    def has_permission(self, request, view):
+        """Проверка общих прав"""
+        if not request.user.is_authenticated:
             return False
         
-        # Проверяем участие в проекте
-        if not project.members.filter(id=request.user.id).exists():
-            return False
-        
-        # Если запрос на чтение, разрешаем участникам
+        return (
+            request.user.is_staff or 
+            getattr(request.user, 'is_admin', False) or
+            getattr(request.user, 'role', '') == 'manager'
+        )
+
+
+class IsOwnerOrReadOnly(BasePermission):
+    """
+    Право доступа: владелец может изменять, остальные только читать
+    """
+    
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав на уровне объекта"""
+        # Права на чтение для всех аутентифицированных
         if request.method in permissions.SAFE_METHODS:
             return True
         
-        # Если запрос на изменение, проверяем роль
+        # Права на запись только для владельца или администратора
         return (
-            project.manager == request.user or
-            request.user.role in ['admin', 'manager']
+            obj.created_by == request.user or
+            request.user.is_staff or
+            getattr(request.user, 'is_admin', False)
         )
-
-
-class CanAssignDefects(permissions.BasePermission):
-    """
-    Разрешение назначать дефекты только менеджерам
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        if not request.user.is_authenticated:
-            return False
-        
-        return (
-            hasattr(request.user, 'role') and
-            request.user.role in ['admin', 'manager']
-        )
-
-
-class CanManageUsers(permissions.BasePermission):
-    """
-    Разрешение управлять пользователями только администраторам
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        return (
-            request.user.is_authenticated and
-            request.user.is_staff and
-            hasattr(request.user, 'role') and
-            request.user.role == 'admin'
-        )
-
-
-class IsDefectAssigneeOrAuthor(permissions.BasePermission):
-    """
-    Разрешение автору или исполнителю дефекта
-    """
-    
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
-        if not request.user.is_authenticated:
-            return False
-        
-        return (
-            obj.author == request.user or
-            obj.assignee == request.user or
-            (hasattr(obj, 'project') and obj.project.manager == request.user) or
-            request.user.role in ['admin', 'manager']
-        )
-
-
-class CanChangeDefectStatus(permissions.BasePermission):
-    """
-    Разрешение изменять статус дефекта
-    """
-    
-    def has_object_permission(self, request: Request, view: APIView, obj: Any) -> bool:
-        if not request.user.is_authenticated:
-            return False
-        
-        # Автор может изменить статус с "новый" на "отменён"
-        if obj.author == request.user:
-            return True
-        
-        # Исполнитель может изменить статус с "в работе" на "на проверке"
-        if obj.assignee == request.user:
-            return True
-        
-        # Менеджер проекта может изменить любой статус
-        if hasattr(obj, 'project') and obj.project.manager == request.user:
-            return True
-        
-        # Администраторы и менеджеры могут изменить любой статус
-        return request.user.role in ['admin', 'manager']
-
-
-class ReadOnlyPermission(permissions.BasePermission):
-    """
-    Разрешение только на чтение
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        return request.method in permissions.SAFE_METHODS and request.user.is_authenticated
-
-
-class DynamicPermission(permissions.BasePermission):
-    """
-    Динамическое разрешение на основе роли пользователя
-    """
-    
-    def has_permission(self, request: Request, view: APIView) -> bool:
-        if not request.user.is_authenticated:
-            return False
-        
-        # Получаем роль пользователя
-        user_role = getattr(request.user, 'role', 'observer')
-        
-        # Определяем разрешения по ролям
-        role_permissions = {
-            'admin': ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-            'manager': ['GET', 'POST', 'PUT', 'PATCH'],
-            'engineer': ['GET', 'POST', 'PUT', 'PATCH'],
-            'observer': ['GET'],
-        }
-        
-        allowed_methods = role_permissions.get(user_role, ['GET'])
-        return request.method in allowed_methods

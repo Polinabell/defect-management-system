@@ -1,88 +1,153 @@
 """
-Общие views и error handlers
+Общие views для приложения
 """
 
-import logging
 from django.http import JsonResponse
+from django.template import loader
+from django.views.decorators.csrf import requires_csrf_token
+from django.views.decorators.cache import never_cache
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import exception_handler
+import logging
 
 logger = logging.getLogger(__name__)
 
 
-def custom_exception_handler(exc, context):
+@never_cache
+@requires_csrf_token
+def bad_request(request, exception=None):
     """
-    Кастомный обработчик исключений для DRF
+    Обработчик ошибки 400 - Неправильный запрос
     """
-    response = exception_handler(exc, context)
-    
-    if response is not None:
-        custom_response_data = {
-            'error': True,
-            'message': 'Произошла ошибка при обработке запроса',
-            'details': response.data,
-            'status_code': response.status_code
+    logger.warning(
+        f"Bad request (400) for path: {request.path}",
+        extra={
+            'request': request,
+            'status_code': 400,
+            'exception': str(exception) if exception else None
         }
-        
-        # Логируем ошибку
-        logger.error(
-            f"API Error: {exc.__class__.__name__} - {str(exc)}",
-            extra={
-                'request': context.get('request'),
-                'view': context.get('view'),
-                'exc_info': exc
-            }
-        )
-        
-        response.data = custom_response_data
+    )
     
-    return response
+    if request.path.startswith('/api/'):
+        return JsonResponse({
+            'error': 'Неправильный запрос',
+            'status_code': 400,
+            'detail': 'Запрос содержит неверные данные'
+        }, status=400)
+    
+    try:
+        template = loader.get_template('errors/400.html')
+        return JsonResponse({
+            'error': 'Bad Request',
+            'status_code': 400
+        }, status=400)
+    except:
+        return JsonResponse({
+            'error': 'Bad Request',
+            'status_code': 400
+        }, status=400)
 
 
-def bad_request(request, exception):
+@never_cache
+@requires_csrf_token
+def permission_denied(request, exception=None):
     """
-    400 Bad Request error handler
+    Обработчик ошибки 403 - Доступ запрещён
     """
-    logger.warning(f"Bad Request: {request.path} - {str(exception)}")
-    return JsonResponse({
-        'error': True,
-        'message': 'Некорректный запрос',
-        'status_code': 400
-    }, status=400)
+    logger.warning(
+        f"Permission denied (403) for path: {request.path}",
+        extra={
+            'request': request,
+            'status_code': 403,
+            'user': request.user.id if hasattr(request, 'user') and request.user.is_authenticated else None,
+            'exception': str(exception) if exception else None
+        }
+    )
+    
+    if request.path.startswith('/api/'):
+        return JsonResponse({
+            'error': 'Доступ запрещён',
+            'status_code': 403,
+            'detail': 'У вас недостаточно прав для выполнения этого действия'
+        }, status=403)
+    
+    try:
+        template = loader.get_template('errors/403.html')
+        return JsonResponse({
+            'error': 'Permission Denied',
+            'status_code': 403
+        }, status=403)
+    except:
+        return JsonResponse({
+            'error': 'Permission Denied',
+            'status_code': 403
+        }, status=403)
 
 
-def permission_denied(request, exception):
+@never_cache
+@requires_csrf_token
+def not_found(request, exception=None):
     """
-    403 Permission Denied error handler
+    Обработчик ошибки 404 - Страница не найдена
     """
-    logger.warning(f"Permission Denied: {request.path} - {str(exception)}")
-    return JsonResponse({
-        'error': True,
-        'message': 'Доступ запрещён',
-        'status_code': 403
-    }, status=403)
+    logger.info(
+        f"Page not found (404) for path: {request.path}",
+        extra={
+            'request': request,
+            'status_code': 404,
+            'exception': str(exception) if exception else None
+        }
+    )
+    
+    if request.path.startswith('/api/'):
+        return JsonResponse({
+            'error': 'Ресурс не найден',
+            'status_code': 404,
+            'detail': 'Запрашиваемый ресурс не существует'
+        }, status=404)
+    
+    try:
+        template = loader.get_template('errors/404.html')
+        return JsonResponse({
+            'error': 'Not Found',
+            'status_code': 404
+        }, status=404)
+    except:
+        return JsonResponse({
+            'error': 'Not Found',
+            'status_code': 404
+        }, status=404)
 
 
-def not_found(request, exception):
-    """
-    404 Not Found error handler
-    """
-    logger.info(f"Not Found: {request.path}")
-    return JsonResponse({
-        'error': True,
-        'message': 'Ресурс не найден',
-        'status_code': 404
-    }, status=404)
-
-
+@never_cache
+@requires_csrf_token
 def server_error(request):
     """
-    500 Internal Server Error handler
+    Обработчик ошибки 500 - Внутренняя ошибка сервера
     """
-    logger.error(f"Server Error: {request.path}")
-    return JsonResponse({
-        'error': True,
-        'message': 'Внутренняя ошибка сервера',
-        'status_code': 500
-    }, status=500)
+    logger.error(
+        f"Internal server error (500) for path: {request.path}",
+        extra={
+            'request': request,
+            'status_code': 500
+        },
+        exc_info=True
+    )
+    
+    if request.path.startswith('/api/'):
+        return JsonResponse({
+            'error': 'Внутренняя ошибка сервера',
+            'status_code': 500,
+            'detail': 'Произошла внутренняя ошибка сервера. Пожалуйста, попробуйте позже.'
+        }, status=500)
+    
+    try:
+        template = loader.get_template('errors/500.html')
+        return JsonResponse({
+            'error': 'Internal Server Error',
+            'status_code': 500
+        }, status=500)
+    except:
+        return JsonResponse({
+            'error': 'Internal Server Error',
+            'status_code': 500
+        }, status=500)
