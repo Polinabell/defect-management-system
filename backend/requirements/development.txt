@@ -1,0 +1,27 @@
+# Зависимости для разработки
+-r base.txt
+
+# Отладка и разработка
+django-debug-toolbar==4.2.0
+django-silk==5.0.4
+ipython==8.17.2
+ipdb==0.13.13
+
+# Тестирование
+pytest==7.4.3
+pytest-django==4.7.0
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+factory-boy==3.3.0
+freezegun==1.2.2
+
+# Качество кода
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+django-stubs==4.2.6
+
+# Документация
+sphinx==7.2.6
+sphinx-rtd-theme==1.3.0
