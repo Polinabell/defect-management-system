@@ -12,8 +12,8 @@ djangorestframework-simplejwt==5.3.0
 
 # Утилиты
 python-decouple==3.8
-# Используем версию с доступными колёсами под Windows
-Pillow==10.1.0
+# Версия Pillow с поддержкой Python 3.13/Windows
+Pillow==11.0.0
 
 # Разработка
 django-debug-toolbar==4.2.0
