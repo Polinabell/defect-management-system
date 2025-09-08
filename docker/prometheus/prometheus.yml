@@ -1,0 +1,113 @@
+# Конфигурация Prometheus для мониторинга системы управления дефектами
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'defect-management-dev'
+    environment: 'development'
+
+# Правила для алертов
+rule_files:
+  - "rules/*.yml"
+
+# Настройки Alertmanager (для production)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets:
+#           - alertmanager:9093
+
+# Конфигурация сбора метрик
+scrape_configs:
+  # Самомониторинг Prometheus
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 30s
+
+  # Django приложение
+  - job_name: 'django'
+    static_configs:
+      - targets: ['web:8000']
+    metrics_path: '/metrics/'
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    params:
+      format: ['prometheus']
+
+  # PostgreSQL метрики
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres_exporter:9187']
+    scrape_interval: 30s
+
+  # Redis метрики
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis_exporter:9121']
+    scrape_interval: 30s
+
+  # Nginx метрики
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx_exporter:9113']
+    scrape_interval: 30s
+
+  # Node Exporter (системные метрики)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+  # Celery метрики
+  - job_name: 'celery'
+    static_configs:
+      - targets: ['celery_exporter:9540']
+    scrape_interval: 30s
+
+  # Docker контейнеры (cAdvisor)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 30s
+
+  # Blackbox мониторинг (внешние проверки)
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - http://web:8000/health/
+        - http://nginx/health/
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
+  # Custom метрики приложения
+  - job_name: 'defect-management-custom'
+    static_configs:
+      - targets: ['web:8000']
+    metrics_path: '/api/monitoring/metrics/'
+    scrape_interval: 60s
+    basic_auth:
+      username: 'monitoring'
+      password: 'monitoring_password'
+
+# Конфигурация удаленного хранилища (для production)
+# remote_write:
+#   - url: "https://prometheus-remote-storage.example.com/api/v1/write"
+#     basic_auth:
+#       username: "user"
+#       password: "password"
+
+# remote_read:
+#   - url: "https://prometheus-remote-storage.example.com/api/v1/read"
+#     basic_auth:
+#       username: "user"
+#       password: "password"
