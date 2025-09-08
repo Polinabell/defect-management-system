@@ -23,6 +23,11 @@ INSTALLED_APPS += [
 
 # Security middleware
 MIDDLEWARE = [
+    'apps.common.middleware.SecurityHeadersMiddleware',
+    'apps.common.middleware.RateLimitMiddleware', 
+    'apps.common.middleware.AuditLoggingMiddleware',
+    'apps.common.middleware.SessionSecurityMiddleware',
+    'apps.common.middleware.SQLInjectionProtectionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ] + MIDDLEWARE
