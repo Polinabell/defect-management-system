@@ -9,7 +9,7 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 
 # Устанавливаем зависимости
-RUN npm ci --only=production
+RUN npm install --legacy-peer-deps
 
 # Копируем исходный код frontend
 COPY frontend/ ./
