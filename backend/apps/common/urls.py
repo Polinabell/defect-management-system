@@ -4,6 +4,7 @@ URL маршруты для общих функций
 
 from django.urls import path
 from . import views
+from . import metrics_views
 
 app_name = 'common'
 
@@ -22,4 +23,8 @@ urlpatterns = [
     
     # Аудит
     path('audit-logs/', views.AuditLogListView.as_view(), name='audit-log-list'),
+    
+    # Метрики и мониторинг
+    path('metrics/', metrics_views.metrics_view, name='metrics'),
+    path('health/', metrics_views.health_check_view, name='health-check'),
 ]

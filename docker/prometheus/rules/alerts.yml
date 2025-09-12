@@ -1,0 +1,189 @@
+groups:
+  - name: defect_management_alerts
+    rules:
+      # Алерты для Django приложения
+      - alert: DjangoAppDown
+        expr: up{job="django-app"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Django приложение недоступно"
+          description: "Django приложение не отвечает уже более 1 минуты"
+
+      - alert: DjangoHighErrorRate
+        expr: rate(django_http_requests_total{status=~"5.."}[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокий уровень ошибок в Django"
+          description: "Уровень 5xx ошибок превышает 10% за последние 5 минут"
+
+      - alert: DjangoHighResponseTime
+        expr: histogram_quantile(0.95, rate(django_http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокое время отклика Django"
+          description: "95-й перцентиль времени отклика превышает 2 секунды"
+
+      # Алерты для базы данных
+      - alert: PostgreSQLDown
+        expr: up{job="postgres"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL недоступна"
+          description: "PostgreSQL не отвечает уже более 1 минуты"
+
+      - alert: PostgreSQLHighConnections
+        expr: pg_stat_database_numbackends / pg_settings_max_connections > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокое количество подключений к PostgreSQL"
+          description: "Количество подключений превышает 80% от максимума"
+
+      - alert: PostgreSQLSlowQueries
+        expr: rate(pg_stat_database_tup_returned[5m]) / rate(pg_stat_database_tup_fetched[5m]) < 0.1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Медленные запросы в PostgreSQL"
+          description: "Соотношение возвращенных и полученных кортежей указывает на медленные запросы"
+
+      # Алерты для Redis
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis недоступен"
+          description: "Redis не отвечает уже более 1 минуты"
+
+      - alert: RedisHighMemoryUsage
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокое использование памяти Redis"
+          description: "Использование памяти Redis превышает 90%"
+
+      # Алерты для Celery
+      - alert: CeleryWorkersDown
+        expr: celery_workers < 2
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Недостаточно Celery воркеров"
+          description: "Количество активных Celery воркеров меньше 2"
+
+      - alert: CeleryHighQueueLength
+        expr: celery_queue_length > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Длинная очередь Celery"
+          description: "Длина очереди Celery превышает 100 задач"
+
+      - alert: CeleryFailedTasks
+        expr: rate(celery_tasks_failed_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокий уровень неудачных задач Celery"
+          description: "Уровень неудачных задач Celery превышает 0.1 в секунду"
+
+      # Алерты для системы
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокое использование CPU"
+          description: "Использование CPU превышает 80% на {{ $labels.instance }}"
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокое использование памяти"
+          description: "Использование памяти превышает 85% на {{ $labels.instance }}"
+
+      - alert: LowDiskSpace
+        expr: (1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100 > 90
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Мало свободного места на диске"
+          description: "Свободное место на диске меньше 10% на {{ $labels.instance }}"
+
+      - alert: HighDiskIO
+        expr: rate(node_disk_io_time_seconds_total[5m]) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокая нагрузка на диск"
+          description: "Время ввода-вывода диска превышает 80% на {{ $labels.instance }}"
+
+      # Алерты для Nginx
+      - alert: NginxDown
+        expr: up{job="nginx"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nginx недоступен"
+          description: "Nginx не отвечает уже более 1 минуты"
+
+      - alert: NginxHighErrorRate
+        expr: rate(nginx_http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокий уровень ошибок Nginx"
+          description: "Уровень 5xx ошибок Nginx превышает 5% за последние 5 минут"
+
+      # Алерты для бизнес-логики
+      - alert: HighDefectCreationRate
+        expr: rate(defects_created_total[1h]) > 10
+        for: 5m
+        labels:
+          severity: info
+        annotations:
+          summary: "Высокий уровень создания дефектов"
+          description: "Создается более 10 дефектов в час"
+
+      - alert: LongUnresolvedDefects
+        expr: defects_unresolved_count > 50
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Много нерешенных дефектов"
+          description: "Количество нерешенных дефектов превышает 50"
+
+      - alert: NoActiveUsers
+        expr: active_users < 1
+        for: 30m
+        labels:
+          severity: info
+        annotations:
+          summary: "Нет активных пользователей"
+          description: "Нет активных пользователей уже более 30 минут"

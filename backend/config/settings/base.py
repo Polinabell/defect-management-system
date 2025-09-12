@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'apps.common.metrics_middleware.PrometheusMiddleware',
+    'apps.common.metrics_middleware.ActiveUsersMiddleware',
     'apps.common.security_middleware.RateLimitMiddleware',
     'apps.common.security_middleware.SQLInjectionProtectionMiddleware',
     'apps.common.security_middleware.XSSProtectionMiddleware',

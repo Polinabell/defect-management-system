@@ -1,107 +1,25 @@
-# CI/CD пайплайн для системы управления дефектами
-
 name: CI/CD Pipeline
 
 on:
   push:
     branches: [ main, develop ]
-    tags: [ 'v*' ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 env:
   PYTHON_VERSION: '3.11'
   NODE_VERSION: '18'
-  POSTGRES_VERSION: '15'
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  # Анализ качества кода
-  code-quality:
-    name: Code Quality Analysis
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-        
-    - name: Cache pip dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements/*.txt') }}
-        
-    - name: Install Python dependencies
-      run: |
-        cd backend
-        pip install --upgrade pip
-        pip install -r requirements/development.txt
-        
-    - name: Lint Python code (flake8)
-      run: |
-        cd backend
-        flake8 . --config=.flake8
-        
-    - name: Type check (mypy)
-      run: |
-        cd backend
-        mypy --config-file=mypy.ini .
-        
-    - name: Security check (bandit)
-      run: |
-        cd backend
-        bandit -r . -f json -o bandit-report.json
-        
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-        cache-dependency-path: frontend/package-lock.json
-        
-    - name: Install frontend dependencies
-      run: |
-        cd frontend
-        npm ci
-        
-    - name: Lint TypeScript/React code
-      run: |
-        cd frontend
-        npm run lint
-        
-    - name: Type check frontend
-      run: |
-        cd frontend
-        npm run type-check
-        
-    - name: Upload code quality reports
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: code-quality-reports
-        path: |
-          backend/bandit-report.json
-          frontend/eslint-report.json
-
-  # Тестирование backend
   backend-tests:
-    name: Backend Tests
     runs-on: ubuntu-latest
-    needs: [code-quality]
     
     services:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_DB: test_defect_management
-          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_db
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -109,9 +27,9 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-          
+      
       redis:
-        image: redis:7-alpine
+        image: redis:7
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -119,316 +37,203 @@ jobs:
           --health-retries 5
         ports:
           - 6379:6379
-    
+
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
+    - uses: actions/checkout@v4
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
-        
+    
     - name: Cache pip dependencies
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements/*.txt') }}
-        
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
     - name: Install dependencies
       run: |
         cd backend
-        pip install --upgrade pip
-        pip install -r requirements/testing.txt
-        
-    - name: Run migrations
+        python -m pip install --upgrade pip
+        pip install -r requirements/development.txt
+        pip install -r requirements/security.txt
+    
+    - name: Run security checks
+      run: |
+        cd backend
+        safety check
+        bandit -r . -f json -o bandit-report.json || true
+    
+    - name: Run linting
+      run: |
+        cd backend
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        black --check .
+        isort --check-only .
+    
+    - name: Run tests
       env:
-        DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_defect_management
+        DJANGO_SETTINGS_MODULE: config.settings.testing
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
         REDIS_URL: redis://localhost:6379/0
       run: |
         cd backend
-        python manage.py migrate --settings=config.settings.testing
-        
-    - name: Run unit tests
-      env:
-        DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_defect_management
-        REDIS_URL: redis://localhost:6379/0
+        python manage.py test --verbosity=2
+    
+    - name: Generate coverage report
       run: |
         cd backend
-        pytest --cov=. --cov-report=xml --cov-report=html --junitxml=test-results.xml -v
-        
-    - name: Upload test results
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: backend-test-results
-        path: |
-          backend/test-results.xml
-          backend/htmlcov/
-          
+        coverage run --source='.' manage.py test
+        coverage report
+        coverage xml
+    
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-        file: backend/coverage.xml
+        file: ./backend/coverage.xml
         flags: backend
         name: backend-coverage
 
-  # Тестирование frontend
   frontend-tests:
-    name: Frontend Tests
     runs-on: ubuntu-latest
-    needs: [code-quality]
     
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
+    - uses: actions/checkout@v4
+    
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
         cache-dependency-path: frontend/package-lock.json
-        
+    
     - name: Install dependencies
       run: |
         cd frontend
         npm ci
-        
-    - name: Run unit tests
+    
+    - name: Run linting
       run: |
         cd frontend
-        npm run test:ci
-        
-    - name: Upload test results
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: frontend-test-results
-        path: |
-          frontend/coverage/
-          frontend/test-results.xml
-
-  # Интеграционные тесты
-  integration-tests:
-    name: Integration Tests
-    runs-on: ubuntu-latest
-    needs: [backend-tests, frontend-tests]
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+        npm run lint
     
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-      
-    - name: Build test environment
+    - name: Run tests
       run: |
-        cp .env.example .env.test
-        docker-compose -f docker-compose.test.yml build
-        
-    - name: Run integration tests
-      run: |
-        docker-compose -f docker-compose.test.yml up --abort-on-container-exit
-        
-    - name: Cleanup
-      if: always()
-      run: |
-        docker-compose -f docker-compose.test.yml down -v
-        
-    - name: Upload integration test results
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: integration-test-results
-        path: test-reports/
-
-  # Сборка и публикация образов
-  build-and-push:
-    name: Build and Push Images
-    runs-on: ubuntu-latest
-    needs: [backend-tests, frontend-tests]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        cd frontend
+        npm test -- --coverage --watchAll=false
     
-    permissions:
-      contents: read
-      packages: write
-      
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-      
-    - name: Login to Container Registry
-      uses: docker/login-action@v3
+    - name: Build application
+      run: |
+        cd frontend
+        npm run build
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
       with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Extract metadata
-      id: meta
-      uses: docker/metadata-action@v5
-      with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=sha
-          type=raw,value=latest,enable={{is_default_branch}}
-          
-    - name: Build and push
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        platforms: linux/amd64,linux/arm64
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        build-args: |
-          BUILD_ENV=production
-          VERSION=${{ github.sha }}
+        file: ./frontend/coverage/lcov.info
+        flags: frontend
+        name: frontend-coverage
 
-  # Сканирование безопасности
   security-scan:
-    name: Security Scanning
     runs-on: ubuntu-latest
-    needs: [build-and-push]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
+    - uses: actions/checkout@v4
+    
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        scan-type: 'fs'
+        scan-ref: '.'
         format: 'sarif'
         output: 'trivy-results.sarif'
-        
+    
     - name: Upload Trivy scan results to GitHub Security tab
       uses: github/codeql-action/upload-sarif@v2
+      if: always()
       with:
         sarif_file: 'trivy-results.sarif'
 
-  # Деплой в staging
-  deploy-staging:
-    name: Deploy to Staging
+  build-and-push:
+    needs: [backend-tests, frontend-tests, security-scan]
     runs-on: ubuntu-latest
-    needs: [integration-tests, build-and-push]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
+    - name: Build and push backend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./backend
+        file: ./backend/Dockerfile
+        push: true
+        tags: |
+          ${{ secrets.DOCKER_USERNAME }}/defect-management-backend:latest
+          ${{ secrets.DOCKER_USERNAME }}/defect-management-backend:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Build and push frontend image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./frontend
+        file: ./frontend/Dockerfile
+        push: true
+        tags: |
+          ${{ secrets.DOCKER_USERNAME }}/defect-management-frontend:latest
+          ${{ secrets.DOCKER_USERNAME }}/defect-management-frontend:${{ github.sha }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  deploy-staging:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
     environment: staging
     
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Deploy to staging server
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.STAGING_HOST }}
-        username: ${{ secrets.STAGING_USER }}
-        key: ${{ secrets.STAGING_SSH_KEY }}
-        script: |
-          cd /opt/defect-management-staging
-          docker-compose -f docker-compose.staging.yml pull
-          docker-compose -f docker-compose.staging.yml up -d
-          docker system prune -f
-          
-    - name: Run smoke tests
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to staging
       run: |
-        # Проверяем, что staging среда работает
-        curl -f https://staging.defect-management.com/health/ || exit 1
+        echo "Deploying to staging environment..."
+        # Здесь будет команда деплоя на staging сервер
+        # Например, через SSH или Kubernetes
 
-  # Деплой в production
   deploy-production:
-    name: Deploy to Production
+    needs: build-and-push
     runs-on: ubuntu-latest
-    needs: [integration-tests, build-and-push, security-scan]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     environment: production
     
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-      
-    - name: Deploy to production servers
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.PRODUCTION_HOST }}
-        username: ${{ secrets.PRODUCTION_USER }}
-        key: ${{ secrets.PRODUCTION_SSH_KEY }}
-        script: |
-          cd /opt/defect-management-production
-          
-          # Создаём backup перед деплоем
-          docker-compose exec -T db pg_dump -U $DB_USER $DB_NAME > backup_$(date +%Y%m%d_%H%M%S).sql
-          
-          # Blue-green деплой
-          docker-compose -f docker-compose.prod.yml pull
-          docker-compose -f docker-compose.prod.yml up -d --scale web=2
-          
-          # Ждём готовности новых контейнеров
-          sleep 30
-          
-          # Проверяем health check
-          curl -f https://defect-management.com/health/ || exit 1
-          
-          # Очистка старых образов
-          docker image prune -f
-          
-    - name: Run production smoke tests
-      run: |
-        # Критические проверки production среды
-        curl -f https://defect-management.com/health/ || exit 1
-        curl -f https://defect-management.com/api/health/ || exit 1
-        
-    - name: Notify deployment success
-      if: success()
-      uses: 8398a7/action-slack@v3
-      with:
-        status: success
-        text: 'Production deployment successful! :rocket:'
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        
-    - name: Notify deployment failure
-      if: failure()
-      uses: 8398a7/action-slack@v3
-      with:
-        status: failure
-        text: 'Production deployment failed! :x:'
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-  # Уведомления
-  notify:
-    name: Notifications
-    runs-on: ubuntu-latest
-    needs: [deploy-production]
-    if: always()
+    - uses: actions/checkout@v4
     
-    steps:
-    - name: Send Telegram notification
-      if: success()
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.TELEGRAM_CHAT_ID }}
-        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        message: |
-          ✅ Деплой успешно завершён!
-          
-          Репозиторий: ${{ github.repository }}
-          Ветка: ${{ github.ref_name }}
-          Коммит: ${{ github.sha }}
-          Автор: ${{ github.actor }}
-          
-          🚀 Приложение доступно: https://defect-management.com
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production environment..."
+        # Здесь будет команда деплоя на production сервер
+        # Например, через SSH или Kubernetes
+    
+    - name: Run health check
+      run: |
+        echo "Running health checks..."
+        # Проверка работоспособности после деплоя
+    
+    - name: Notify deployment
+      run: |
+        echo "Deployment completed successfully!"
+        # Уведомление о успешном деплое

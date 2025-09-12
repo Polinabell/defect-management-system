@@ -97,6 +97,59 @@ clean: ## Очистить временные файлы
 	rm -rf htmlcov/
 	@echo "$(GREEN)Очистка завершена$(NC)"
 
+deploy-staging: ## Деплой в staging
+	@echo "$(BLUE)Деплой в staging...$(NC)"
+	chmod +x scripts/deploy.sh
+	./scripts/deploy.sh staging
+
+deploy-production: ## Деплой в production
+	@echo "$(BLUE)Деплой в production...$(NC)"
+	chmod +x scripts/deploy.sh
+	./scripts/deploy.sh production
+
+rollback-staging: ## Откат staging
+	@echo "$(BLUE)Откат staging...$(NC)"
+	chmod +x scripts/rollback.sh
+	./scripts/rollback.sh staging
+
+rollback-production: ## Откат production
+	@echo "$(BLUE)Откат production...$(NC)"
+	chmod +x scripts/rollback.sh
+	./scripts/rollback.sh production
+
+docker-build: ## Сборка Docker образов
+	@echo "$(BLUE)Сборка Docker образов...$(NC)"
+	docker-compose -f docker-compose.prod.yml build
+
+docker-up: ## Запуск Docker контейнеров
+	@echo "$(BLUE)Запуск Docker контейнеров...$(NC)"
+	docker-compose -f docker-compose.prod.yml up -d
+
+docker-down: ## Остановка Docker контейнеров
+	@echo "$(BLUE)Остановка Docker контейнеров...$(NC)"
+	docker-compose -f docker-compose.prod.yml down
+
+docker-logs: ## Просмотр логов Docker
+	@echo "$(BLUE)Просмотр логов...$(NC)"
+	docker-compose -f docker-compose.prod.yml logs -f
+
+monitor: ## Запуск мониторинга
+	@echo "$(BLUE)Запуск мониторинга...$(NC)"
+	docker-compose -f docker-compose.prod.yml up -d prometheus grafana
+	@echo "$(GREEN)Prometheus: http://localhost:9090$(NC)"
+	@echo "$(GREEN)Grafana: http://localhost:3000 (admin/admin)$(NC)"
+
+backup: ## Создание резервной копии
+	@echo "$(BLUE)Создание резервной копии...$(NC)"
+	docker-compose -f docker-compose.prod.yml exec db pg_dump -U postgres defect_management_prod > backup_$(shell date +%Y%m%d_%H%M%S).sql
+	@echo "$(GREEN)Резервная копия создана$(NC)"
+
+health-check: ## Проверка здоровья сервисов
+	@echo "$(BLUE)Проверка здоровья сервисов...$(NC)"
+	curl -f http://localhost/api/v1/health/ || echo "$(RED)API недоступен$(NC)"
+	curl -f http://localhost/ || echo "$(RED)Frontend недоступен$(NC)"
+	@echo "$(GREEN)Проверка завершена$(NC)"
+
 logs: ## Показать логи Django
 	@echo "$(BLUE)Логи Django:$(NC)"
 	tail -f logs/django.log
