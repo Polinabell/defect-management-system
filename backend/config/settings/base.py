@@ -215,6 +215,16 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# Backup settings
+BACKUP_DIR = config('BACKUP_DIR', default='backups')
+BACKUP_KEEP_DAYS = config('BACKUP_KEEP_DAYS', default=30, cast=int)
+BACKUP_COMPRESS = config('BACKUP_COMPRESS', default=True, cast=bool)
+
+# Notification settings
+NOTIFICATION_KEEP_DAYS = config('NOTIFICATION_KEEP_DAYS', default=30, cast=int)
+AUDIT_LOG_KEEP_DAYS = config('AUDIT_LOG_KEEP_DAYS', default=90, cast=int)
 
 # Logging
 LOGGING = {
