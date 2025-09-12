@@ -641,6 +641,49 @@ export const defectsAPI = {
   getEngineers: async (): Promise<typeof MOCK_ENGINEERS> => {
     await new Promise(resolve => setTimeout(resolve, 200));
     return MOCK_ENGINEERS;
+  },
+
+  // Методы для работы с вложениями
+  getDefectAttachments: async (defectId: number): Promise<any[]> => {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    // Mock данные для вложений
+    const mockAttachments = [
+      {
+        id: 1,
+        filename: 'screenshot_1.png',
+        file_type: 'image/png',
+        file_size: 1024000,
+        file_url: '/api/attachments/1/download',
+        uploaded_at: '2024-01-15T10:30:00Z',
+        uploaded_by: {
+          id: 1,
+          first_name: 'Анна',
+          last_name: 'Менеджерова'
+        }
+      },
+      {
+        id: 2,
+        filename: 'technical_drawing.pdf',
+        file_type: 'application/pdf',
+        file_size: 2048000,
+        file_url: '/api/attachments/2/download',
+        uploaded_at: '2024-01-16T14:20:00Z',
+        uploaded_by: {
+          id: 2,
+          first_name: 'Иван',
+          last_name: 'Инженеров'
+        }
+      }
+    ];
+    
+    return mockAttachments;
+  },
+
+  deleteAttachment: async (attachmentId: number): Promise<void> => {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    // В реальном приложении здесь был бы запрос к API для удаления вложения
+    console.log(`Удаление вложения с ID: ${attachmentId}`);
   }
 };
 

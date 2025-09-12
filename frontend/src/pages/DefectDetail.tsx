@@ -42,6 +42,7 @@ import { useAuth } from '../contexts/AuthContext';
 import DefectWorkflow from '../components/defects/DefectWorkflow';
 import DefectComments from '../components/defects/DefectComments';
 import { EditDefectDialog } from '../components/defects/DefectDialogs';
+import { AttachmentViewer } from '../components/defects/AttachmentViewer';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -78,6 +79,7 @@ export const DefectDetail: React.FC = () => {
   
   const [defect, setDefect] = useState<Defect | null>(null);
   const [comments, setComments] = useState<any[]>([]);
+  const [attachments, setAttachments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
@@ -94,13 +96,15 @@ export const DefectDetail: React.FC = () => {
     
     setLoading(true);
     try {
-      const [defectData, commentsData] = await Promise.all([
+      const [defectData, commentsData, attachmentsData] = await Promise.all([
         defectsAPI.getDefect(parseInt(id)),
-        commentsAPI.getDefectComments(parseInt(id))
+        commentsAPI.getDefectComments(parseInt(id)),
+        defectsAPI.getDefectAttachments(parseInt(id))
       ]);
       
       setDefect(defectData as Defect);
       setComments(commentsData);
+      setAttachments(attachmentsData || []);
     } catch (error) {
       console.error('Ошибка загрузки данных дефекта:', error);
     } finally {
@@ -143,6 +147,15 @@ export const DefectDetail: React.FC = () => {
       setComments(prev => prev.filter(c => c.id !== commentId));
     } catch (error) {
       console.error('Ошибка удаления комментария:', error);
+    }
+  };
+
+  const handleDeleteAttachment = async (attachmentId: number) => {
+    try {
+      await defectsAPI.deleteAttachment(attachmentId);
+      setAttachments(prev => prev.filter(a => a.id !== attachmentId));
+    } catch (error) {
+      console.error('Ошибка удаления вложения:', error);
     }
   };
 
@@ -354,6 +367,7 @@ export const DefectDetail: React.FC = () => {
         >
           <Tab label="Workflow" />
           <Tab label={`Комментарии (${comments.length})`} />
+          <Tab label={`Вложения (${attachments.length})`} />
         </Tabs>
 
         <CustomTabPanel value={activeTab} index={0}>
@@ -373,6 +387,14 @@ export const DefectDetail: React.FC = () => {
             onDeleteComment={handleDeleteComment}
             currentUserId={user?.id || 0}
             canViewInternal={canViewInternalComments}
+          />
+        </CustomTabPanel>
+
+        <CustomTabPanel value={activeTab} index={2}>
+          <AttachmentViewer
+            attachments={attachments}
+            onDelete={canManageDefects ? handleDeleteAttachment : undefined}
+            canDelete={canManageDefects}
           />
         </CustomTabPanel>
       </Paper>
