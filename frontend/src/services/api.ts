@@ -739,3 +739,119 @@ export const authAPI = {
     throw new Error('User not found');
   }
 };
+
+// Mock данные для комментариев
+const MOCK_COMMENTS: any[] = [
+  {
+    id: 1,
+    defect_id: 1,
+    author: { id: 1, first_name: 'Анна', last_name: 'Менеджерова', role: 'manager' },
+    content: 'Необходимо срочно исправить эту трещину, так как она может привести к серьезным проблемам.',
+    created_at: '2024-09-01T10:00:00Z',
+    updated_at: '2024-09-01T10:00:00Z',
+    is_internal: false,
+    attachments: []
+  },
+  {
+    id: 2,
+    defect_id: 1,
+    author: { id: 2, first_name: 'Петр', last_name: 'Инженеров', role: 'engineer' },
+    content: 'Провел осмотр. Трещина действительно серьезная. Планирую начать работы завтра.',
+    created_at: '2024-09-02T14:30:00Z',
+    updated_at: '2024-09-02T14:30:00Z',
+    is_internal: false,
+    attachments: [
+      { id: 1, filename: 'photo_analysis.jpg', url: '/images/photo_analysis.jpg', type: 'image/jpeg' }
+    ]
+  },
+  {
+    id: 3,
+    defect_id: 2,
+    author: { id: 1, first_name: 'Анна', last_name: 'Менеджерова', role: 'manager' },
+    content: 'Обратили внимание клиенты. Нужно исправить до открытия.',
+    created_at: '2024-08-25T09:15:00Z',
+    updated_at: '2024-08-25T09:15:00Z',
+    is_internal: true,
+    attachments: []
+  }
+];
+
+// Комментарии API
+export const commentsAPI = {
+  getDefectComments: async (defectId: number): Promise<any[]> => {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    return MOCK_COMMENTS.filter(c => c.defect_id === defectId);
+  },
+
+  addComment: async (defectId: number, content: string, isInternal: boolean = false, files?: FileList): Promise<any> => {
+    await new Promise(resolve => setTimeout(resolve, 600));
+    
+    const attachments: any[] = [];
+    if (files) {
+      Array.from(files).forEach((file, index) => {
+        attachments.push({
+          id: Date.now() + index,
+          filename: file.name,
+          url: `/uploads/${file.name}`,
+          type: file.type
+        });
+      });
+    }
+
+    const newComment = {
+      id: Math.max(...MOCK_COMMENTS.map(c => c.id), 0) + 1,
+      defect_id: defectId,
+      author: { id: 1, first_name: 'Анна', last_name: 'Менеджерова', role: 'manager' },
+      content,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      is_internal: isInternal,
+      attachments
+    };
+
+    MOCK_COMMENTS.push(newComment);
+
+    // Обновляем счетчик комментариев в дефекте
+    const defectIndex = MOCK_DEFECTS.findIndex(d => d.id === defectId);
+    if (defectIndex !== -1) {
+      MOCK_DEFECTS[defectIndex].comments_count = (MOCK_DEFECTS[defectIndex].comments_count || 0) + 1;
+    }
+
+    return newComment;
+  },
+
+  updateComment: async (commentId: number, content: string): Promise<any> => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const index = MOCK_COMMENTS.findIndex(c => c.id === commentId);
+    if (index === -1) {
+      throw new Error('Комментарий не найден');
+    }
+
+    MOCK_COMMENTS[index] = {
+      ...MOCK_COMMENTS[index],
+      content,
+      updated_at: new Date().toISOString()
+    };
+
+    return MOCK_COMMENTS[index];
+  },
+
+  deleteComment: async (commentId: number): Promise<void> => {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    const index = MOCK_COMMENTS.findIndex(c => c.id === commentId);
+    if (index === -1) {
+      throw new Error('Комментарий не найден');
+    }
+
+    const comment = MOCK_COMMENTS[index];
+    MOCK_COMMENTS.splice(index, 1);
+
+    // Обновляем счетчик комментариев в дефекте
+    const defectIndex = MOCK_DEFECTS.findIndex(d => d.id === comment.defect_id);
+    if (defectIndex !== -1) {
+      MOCK_DEFECTS[defectIndex].comments_count = Math.max((MOCK_DEFECTS[defectIndex].comments_count || 1) - 1, 0);
+    }
+  }
+};

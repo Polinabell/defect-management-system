@@ -3,6 +3,7 @@
  */
 
 import React, { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -242,6 +243,7 @@ const DefectsFilters: React.FC<{
 
 export const Defects: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { defects, totalCount, page, pageSize, isLoading, error, filters } = useAppSelector(selectDefects);
   const projects = useAppSelector(selectProjectsList);
   
@@ -498,7 +500,12 @@ export const Defects: React.FC = () => {
             </TableHead>
             <TableBody>
               {defects.map((defect) => (
-                <TableRow key={defect.id} hover>
+                <TableRow 
+                  key={defect.id} 
+                  hover 
+                  sx={{ cursor: 'pointer' }}
+                  onClick={() => navigate(`/defects/${defect.id}`)}
+                >
                   <TableCell>
                     <Box display="flex" alignItems="center" gap={1}>
                       <Typography variant="body2" fontWeight="medium">
@@ -575,7 +582,10 @@ export const Defects: React.FC = () => {
                   <TableCell align="center">
                     <IconButton
                       size="small"
-                      onClick={(e) => handleMenuOpen(e, defect)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleMenuOpen(e, defect);
+                      }}
                     >
                       <MoreVertIcon />
                     </IconButton>
