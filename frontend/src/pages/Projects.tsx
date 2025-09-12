@@ -41,8 +41,8 @@ import {
   FilterList as FilterIcon
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth } from '../contexts/AuthContext.tsx';
-import { useNotification } from '../contexts/NotificationContext.tsx';
+import { useAuth } from '../contexts/AuthContext';
+import { useNotification } from '../contexts/NotificationContext';
 import {
   fetchProjects,
   createProject,
@@ -57,7 +57,7 @@ import {
   selectProjectsFilters,
   selectProjectsPagination,
   Project
-} from '../store/slices/projectsSlice.ts';
+} from '../store/slices/projectsSlice';
 
 export const Projects: React.FC = () => {
   const dispatch = useDispatch();
@@ -67,7 +67,11 @@ export const Projects: React.FC = () => {
   const projects = useSelector(selectProjectsList);
   const isLoading = useSelector(selectProjectsLoading);
   const filters = useSelector(selectProjectsFilters);
-  const pagination = useSelector(selectProjectsPagination);
+  const pagination = useSelector(selectProjectsPagination) as {
+    page: number;
+    pageSize: number;
+    totalCount: number;
+  };
   
   const [openDialog, setOpenDialog] = useState(false);
   const [editingProject, setEditingProject] = useState<Project | null>(null);
@@ -86,7 +90,7 @@ export const Projects: React.FC = () => {
 
   // Загрузка проектов при монтировании
   useEffect(() => {
-    dispatch(fetchProjects() as any);
+    dispatch(fetchProjects({}) as any);
   }, [dispatch]);
 
   // Обновление результатов при изменении фильтров

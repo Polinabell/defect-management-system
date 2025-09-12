@@ -3,7 +3,7 @@
  */
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { projectsAPI } from '../../services/api.ts';
+import { projectsAPI } from '../../services/api';
 
 // Типы
 export interface Project {

@@ -5,7 +5,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, AppBar, Toolbar, Typography, Button, Container } from '@mui/material';
-import { useAuth } from '../../contexts/AuthContext.tsx';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Layout: React.FC = () => {
   const { logout, user } = useAuth();

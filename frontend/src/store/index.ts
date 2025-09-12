@@ -6,11 +6,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 
 // Импорт reducers
-import authReducer from './slices/authSlice.ts';
-import uiReducer from './slices/uiSlice.ts';
-import projectsReducer from './slices/projectsSlice.ts';
-import defectsReducer from './slices/defectsSlice.ts';
-import reportsReducer from './slices/reportsSlice.ts';
+import authReducer from './slices/authSlice';
+import uiReducer from './slices/uiSlice';
+import projectsReducer from './slices/projectsSlice';
+import defectsReducer from './slices/defectsSlice';
+import reportsReducer from './slices/reportsSlice';
 
 // Настройка store
 export const store = configureStore({

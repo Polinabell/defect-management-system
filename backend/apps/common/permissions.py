@@ -125,6 +125,48 @@ class IsManagerOrAdmin(BasePermission):
         )
 
 
+class CanManageUsers(BasePermission):
+    """
+    Право доступа: может управлять пользователями
+    """
+    
+    def has_permission(self, request, view):
+        """Проверка общих прав"""
+        if not request.user.is_authenticated:
+            return False
+        
+        # Только администраторы могут управлять пользователями
+        return (
+            request.user.is_staff or 
+            getattr(request.user, 'is_admin', False)
+        )
+
+
+class IsProjectManagerOrReadOnly(BasePermission):
+    """
+    Право доступа: менеджер проекта может изменять, остальные только читать
+    """
+    
+    def has_object_permission(self, request, view, obj):
+        """Проверка прав на уровне объекта"""
+        # Права на чтение для всех аутентифицированных участников проекта
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        
+        # Получаем проект из объекта
+        if hasattr(obj, 'project'):
+            project = obj.project
+        else:
+            project = obj
+        
+        # Права на запись для администраторов
+        if request.user.is_staff or getattr(request.user, 'is_admin', False):
+            return True
+            
+        # Права на запись для менеджера проекта
+        return project.manager == request.user
+
+
 class IsOwnerOrReadOnly(BasePermission):
     """
     Право доступа: владелец может изменять, остальные только читать

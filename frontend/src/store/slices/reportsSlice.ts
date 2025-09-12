@@ -3,7 +3,7 @@
  */
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { reportsAPI } from '../../services/api.ts';
+import { reportsAPI } from '../../services/api';
 
 // Типы
 export interface ReportTemplate {

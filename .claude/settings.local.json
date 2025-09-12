@@ -11,7 +11,18 @@
       "Bash(git add:*)",
       "Bash(git rm:*)",
       "Bash(git commit:*)",
-      "Bash(npm test:*)"
+      "Bash(npm test:*)",
+      "Bash(dir)",
+      "Bash(dir backend)",
+      "Bash(python manage.py:*)",
+      "Bash(pip install:*)",
+      "Bash(dir:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(cat:*)",
+      "Bash(sed:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []

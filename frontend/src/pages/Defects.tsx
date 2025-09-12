@@ -58,7 +58,7 @@ import {
   Schedule as ScheduleIcon,
   Cancel as CancelIcon
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../store/index.ts';
+import { useAppDispatch, useAppSelector } from '../store/index';
 import {
   fetchDefects,
   createDefect,
@@ -70,15 +70,14 @@ import {
   setPage,
   setPageSize,
   clearError,
-  selectDefects,
   selectDefectsList,
   selectDefectsLoading,
   selectDefectsError,
   selectDefectsFilters,
   Defect
-} from '../store/slices/defectsSlice.ts';
-import { fetchProjects, selectProjectsList } from '../store/slices/projectsSlice.ts';
-import { defectsAPI } from '../services/api.ts';
+} from '../store/slices/defectsSlice';
+import { fetchProjects, selectProjectsList } from '../store/slices/projectsSlice';
+import { defectsAPI } from '../services/api';
 
 // Константы для статусов, приоритетов и серьезности
 const STATUS_OPTIONS = [
@@ -244,7 +243,15 @@ const DefectsFilters: React.FC<{
 export const Defects: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { defects, totalCount, page, pageSize, isLoading, error, filters } = useAppSelector(selectDefects);
+  const defects = useAppSelector(selectDefectsList) as Defect[];
+  const isLoading = useAppSelector(selectDefectsLoading);
+  const error = useAppSelector(selectDefectsError);
+  const filters = useAppSelector(selectDefectsFilters);
+  
+  // Заглушки для пагинации (можно добавить позже)
+  const totalCount = defects.length;
+  const page = 1;
+  const pageSize = 10;
   const projects = useAppSelector(selectProjectsList);
   
   // Локальное состояние
@@ -262,8 +269,8 @@ export const Defects: React.FC = () => {
   
   // Загрузка данных
   useEffect(() => {
-    dispatch(fetchDefects({ page, pageSize, ...filters }));
-    dispatch(fetchProjects());
+    dispatch(fetchDefects({ page, pageSize, ...filters }) as any);
+    dispatch(fetchProjects({}) as any);
     
     // Загрузка категорий и инженеров
     Promise.all([

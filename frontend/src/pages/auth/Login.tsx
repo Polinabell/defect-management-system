@@ -14,8 +14,8 @@ import {
   Container,
   CircularProgress
 } from '@mui/material';
-import { useAuth } from '../../contexts/AuthContext.tsx';
-import { useNotification } from '../../contexts/NotificationContext.tsx';
+import { useAuth } from '../../contexts/AuthContext';
+import { useNotification } from '../../contexts/NotificationContext';
 
 export const Login: React.FC = () => {
   const [username, setUsername] = useState('');

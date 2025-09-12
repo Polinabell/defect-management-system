@@ -4,14 +4,14 @@
 
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Layout } from '../components/layout/Layout.tsx';
-import { Dashboard } from '../pages/Dashboard.tsx';
-import { Projects } from '../pages/Projects.tsx';
-import { Defects } from '../pages/Defects.tsx';
-import { DefectDetail } from '../pages/DefectDetail.tsx';
-import { Reports } from '../pages/Reports.tsx';
-import { Login } from '../pages/auth/Login.tsx';
-import { useAuth } from '../contexts/AuthContext.tsx';
+import { Layout } from '../components/layout/Layout';
+import { Dashboard } from '../pages/Dashboard';
+import { Projects } from '../pages/Projects';
+import { Defects } from '../pages/Defects';
+import { DefectDetail } from '../pages/DefectDetail';
+import { Reports } from '../pages/Reports';
+import { Login } from '../pages/auth/Login';
+import { useAuth } from '../contexts/AuthContext';
 
 export const AppRoutes: React.FC = () => {
   const { isAuthenticated } = useAuth();

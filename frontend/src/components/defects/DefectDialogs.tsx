@@ -839,3 +839,312 @@ export const AssignDefectDialog: React.FC<AssignDefectDialogProps> = ({
     </Dialog>
   );
 };
+
+// Компонент редактирования дефекта
+export const EditDefectDialog: React.FC<EditDefectDialogProps> = ({
+  open,
+  onClose,
+  defect,
+  projects,
+  categories,
+  engineers,
+  onSuccess,
+  onError
+}) => {
+  const dispatch = useAppDispatch();
+  const [formData, setFormData] = useState<DefectFormData>({
+    title: '',
+    description: '',
+    priority: 'medium',
+    severity: 'minor',
+    project: '',
+    category: '',
+    location: '',
+    floor: '',
+    room: '',
+    assignee: '',
+    due_date: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (defect && open) {
+      setFormData({
+        title: defect.title,
+        description: defect.description,
+        priority: defect.priority,
+        severity: defect.severity,
+        project: defect.project.id,
+        category: defect.category.id,
+        location: defect.location,
+        floor: defect.floor || '',
+        room: defect.room || '',
+        assignee: defect.assignee?.id || '',
+        due_date: defect.due_date || ''
+      });
+    }
+  }, [defect, open]);
+
+  const handleClose = useCallback(() => {
+    if (!isSubmitting) {
+      onClose();
+    }
+  }, [isSubmitting, onClose]);
+
+  const handleSubmit = useCallback(async (event: React.FormEvent) => {
+    event.preventDefault();
+    
+    if (!defect || !formData.title.trim()) {
+      onError('Необходимо указать название дефекта');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      await dispatch(updateDefect({
+        id: defect.id,
+        data: {
+          title: formData.title,
+          description: formData.description,
+          priority: formData.priority as any,
+          severity: formData.severity as any,
+          project: { id: formData.project as number, name: '' },
+          category: { id: formData.category as number, name: '', color: '' },
+          location: formData.location,
+          floor: formData.floor || undefined,
+          room: formData.room || undefined,
+          due_date: formData.due_date || undefined
+        }
+      })).unwrap();
+      
+      onSuccess('Дефект успешно обновлен');
+      handleClose();
+    } catch (error: any) {
+      onError(error.message || 'Ошибка при обновлении дефекта');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [defect, formData, dispatch, onSuccess, onError, handleClose]);
+
+  if (!defect) return null;
+
+  return (
+    <Dialog 
+      open={open} 
+      onClose={handleClose}
+      maxWidth="md"
+      fullWidth
+      PaperProps={{
+        component: 'form',
+        onSubmit: handleSubmit
+      }}
+    >
+      <DialogTitle>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          Редактировать дефект
+          <IconButton onClick={handleClose} disabled={isSubmitting}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
+      </DialogTitle>
+      
+      <DialogContent dividers>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <TextField
+              required
+              fullWidth
+              label="Название дефекта"
+              value={formData.title}
+              onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+            />
+          </Grid>
+          
+          <Grid item xs={12}>
+            <TextField
+              required
+              fullWidth
+              multiline
+              rows={3}
+              label="Описание"
+              value={formData.description}
+              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            />
+          </Grid>
+          
+          <Grid item xs={12} md={6}>
+            <FormControl required fullWidth>
+              <InputLabel>Проект</InputLabel>
+              <Select
+                value={formData.project}
+                onChange={(e) => setFormData(prev => ({ ...prev, project: e.target.value as number }))}
+                label="Проект"
+              >
+                {projects.map((project) => (
+                  <MenuItem key={project.id} value={project.id}>
+                    {project.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          <Grid item xs={12} md={6}>
+            <FormControl required fullWidth>
+              <InputLabel>Категория</InputLabel>
+              <Select
+                value={formData.category}
+                onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value as number }))}
+                label="Категория"
+              >
+                {categories.map((category) => (
+                  <MenuItem key={category.id} value={category.id}>
+                    <Box display="flex" alignItems="center" gap={1}>
+                      <Box
+                        sx={{
+                          width: 12,
+                          height: 12,
+                          borderRadius: '50%',
+                          backgroundColor: category.color
+                        }}
+                      />
+                      {category.name}
+                    </Box>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <FormControl fullWidth>
+              <InputLabel>Приоритет</InputLabel>
+              <Select
+                value={formData.priority}
+                onChange={(e) => setFormData(prev => ({ ...prev, priority: e.target.value }))}
+                label="Приоритет"
+              >
+                {PRIORITY_OPTIONS.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    <Chip
+                      label={option.label}
+                      size="small"
+                      sx={{
+                        backgroundColor: option.color + '20',
+                        color: option.color,
+                        border: `1px solid ${option.color}30`
+                      }}
+                    />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <FormControl fullWidth>
+              <InputLabel>Серьезность</InputLabel>
+              <Select
+                value={formData.severity}
+                onChange={(e) => setFormData(prev => ({ ...prev, severity: e.target.value }))}
+                label="Серьезность"
+              >
+                {SEVERITY_OPTIONS.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    <Chip
+                      label={option.label}
+                      size="small"
+                      sx={{
+                        backgroundColor: option.color + '20',
+                        color: option.color,
+                        border: `1px solid ${option.color}30`
+                      }}
+                    />
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          <Grid item xs={12} md={4}>
+            <FormControl fullWidth>
+              <InputLabel>Исполнитель</InputLabel>
+              <Select
+                value={formData.assignee}
+                onChange={(e) => setFormData(prev => ({ ...prev, assignee: e.target.value as number }))}
+                label="Исполнитель"
+              >
+                <MenuItem value="">Не назначен</MenuItem>
+                {engineers.map((engineer) => (
+                  <MenuItem key={engineer.id} value={engineer.id}>
+                    <Box display="flex" alignItems="center" gap={1}>
+                      <Avatar sx={{ width: 20, height: 20, fontSize: '0.6rem' }}>
+                        {engineer.first_name[0]}
+                      </Avatar>
+                      {engineer.first_name} {engineer.last_name}
+                    </Box>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          
+          <Grid item xs={12} md={8}>
+            <TextField
+              required
+              fullWidth
+              label="Местоположение"
+              value={formData.location}
+              onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
+            />
+          </Grid>
+          
+          <Grid item xs={12} md={2}>
+            <TextField
+              fullWidth
+              label="Этаж"
+              value={formData.floor}
+              onChange={(e) => setFormData(prev => ({ ...prev, floor: e.target.value }))}
+            />
+          </Grid>
+          
+          <Grid item xs={12} md={2}>
+            <TextField
+              fullWidth
+              label="Помещение"
+              value={formData.room}
+              onChange={(e) => setFormData(prev => ({ ...prev, room: e.target.value }))}
+            />
+          </Grid>
+          
+          {formData.assignee && (
+            <Grid item xs={12} md={6}>
+              <TextField
+                fullWidth
+                type="date"
+                label="Срок выполнения"
+                value={formData.due_date}
+                onChange={(e) => setFormData(prev => ({ ...prev, due_date: e.target.value }))}
+                InputLabelProps={{ shrink: true }}
+              />
+            </Grid>
+          )}
+        </Grid>
+      </DialogContent>
+      
+      <DialogActions>
+        <Button onClick={handleClose} disabled={isSubmitting}>
+          Отмена
+        </Button>
+        <Button 
+          type="submit"
+          variant="contained"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Сохранение...' : 'Сохранить изменения'}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};

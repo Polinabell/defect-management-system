@@ -19,11 +19,11 @@ def health_check(request):
 
 # API patterns
 api_patterns = [
-    path('auth/', include('apps.users.urls')),
-    path('users/', include('apps.users.urls')),
+    path('auth/', include('apps.users.urls', namespace='auth')),
+    path('users/', include('apps.users.urls', namespace='users')),
     path('projects/', include('apps.projects.urls')),
     path('defects/', include('apps.defects.urls')),
-    path('reports/', include('apps.reports.urls')),
+    # path('reports/', include('apps.reports.urls')),  # Временно отключены
 ]
 
 # Main URL patterns

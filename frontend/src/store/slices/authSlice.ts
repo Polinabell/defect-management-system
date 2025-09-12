@@ -3,7 +3,7 @@
  */
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { authAPI } from '../../services/api.ts';
+import { authAPI } from '../../services/api';
 
 // Типы
 export interface User {
@@ -47,8 +47,8 @@ export const loginUser = createAsyncThunk(
       const response = await authAPI.login(credentials);
       
       // Сохраняем токены в localStorage
-      localStorage.setItem('accessToken', response.access);
-      localStorage.setItem('refreshToken', response.refresh);
+      localStorage.setItem('accessToken', (response as any).access);
+      localStorage.setItem('refreshToken', (response as any).refresh);
       
       return response;
     } catch (error: any) {
@@ -129,7 +129,7 @@ export const refreshAccessToken = createAsyncThunk(
       const response = await authAPI.refreshToken(refreshToken);
       
       // Обновляем токен в localStorage
-      localStorage.setItem('accessToken', response.access);
+      localStorage.setItem('accessToken', (response as any).access);
       
       return response;
     } catch (error: any) {
@@ -179,9 +179,9 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.token = action.payload.access;
-        state.refreshToken = action.payload.refresh;
-        state.user = action.payload.user;
+        state.token = (action.payload as any).access;
+        state.refreshToken = (action.payload as any).refresh;
+        state.user = action.payload.user as User;
         state.isAuthenticated = true;
         state.lastActivity = Date.now();
         state.error = null;

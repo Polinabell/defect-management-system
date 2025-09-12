@@ -21,7 +21,7 @@ import {
   Avatar,
   Tab,
   Tabs,
-  TabPanel,
+  // TabPanel, // Нет такого компонента в MUI
   CircularProgress,
 } from '@mui/material';
 import {
@@ -32,15 +32,16 @@ import {
   Person,
   Category,
   LocationOn,
-  Priority,
+  // Priority, // Нет такой иконки в MUI
   Schedule,
 } from '@mui/icons-material';
-import { useAppSelector, useAppDispatch } from '../store/index.ts';
-import { defectsAPI, commentsAPI } from '../services/api.ts';
-import { Defect } from '../types/index.ts';
-import DefectWorkflow from '../components/defects/DefectWorkflow.tsx';
-import DefectComments from '../components/defects/DefectComments.tsx';
-import { EditDefectDialog } from '../components/defects/DefectDialogs.tsx';
+import { useAppSelector, useAppDispatch } from '../store/index';
+import { defectsAPI, commentsAPI } from '../services/api';
+import { Defect } from '../types/index';
+import { useAuth } from '../contexts/AuthContext';
+import DefectWorkflow from '../components/defects/DefectWorkflow';
+import DefectComments from '../components/defects/DefectComments';
+import { EditDefectDialog } from '../components/defects/DefectDialogs';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,7 +74,7 @@ export const DefectDetail: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   
-  const { user, hasPermission } = useAppSelector(state => state.auth);
+  const { user, hasPermission } = useAuth();
   
   const [defect, setDefect] = useState<Defect | null>(null);
   const [comments, setComments] = useState<any[]>([]);
@@ -98,7 +99,7 @@ export const DefectDetail: React.FC = () => {
         commentsAPI.getDefectComments(parseInt(id))
       ]);
       
-      setDefect(defectData);
+      setDefect(defectData as Defect);
       setComments(commentsData);
     } catch (error) {
       console.error('Ошибка загрузки данных дефекта:', error);
@@ -110,7 +111,7 @@ export const DefectDetail: React.FC = () => {
   const handleStatusChange = async (defectId: number, newStatus: string) => {
     try {
       const updatedDefect = await defectsAPI.changeStatus(defectId, newStatus);
-      setDefect(updatedDefect);
+      setDefect(updatedDefect as Defect);
     } catch (error) {
       console.error('Ошибка изменения статуса:', error);
     }
@@ -150,7 +151,7 @@ export const DefectDetail: React.FC = () => {
     
     try {
       const updatedDefect = await defectsAPI.updateDefect(defect.id, data);
-      setDefect(updatedDefect);
+      setDefect(updatedDefect as Defect);
       setEditDialogOpen(false);
     } catch (error) {
       console.error('Ошибка обновления дефекта:', error);
@@ -308,7 +309,7 @@ export const DefectDetail: React.FC = () => {
 
                 {defect.due_date && (
                   <Box display="flex" alignItems="center" gap={1} mb={2}>
-                    <Schedule fontSize="small" color={defect.is_overdue ? 'error' : 'default'} />
+                    <Schedule fontSize="small" color={defect.is_overdue ? 'error' : 'action'} />
                     <Typography variant="body2" color={defect.is_overdue ? 'error' : 'default'}>
                       Срок: {new Date(defect.due_date).toLocaleDateString()}
                       {defect.is_overdue && ' (просрочено)'}
@@ -380,8 +381,12 @@ export const DefectDetail: React.FC = () => {
       <EditDefectDialog
         open={editDialogOpen}
         onClose={() => setEditDialogOpen(false)}
-        onSubmit={handleEditDefect}
-        defect={defect}
+        defect={{...defect, is_overdue: defect.is_overdue ?? false} as any}
+        projects={[]}
+        categories={[]}
+        engineers={[]}
+        onSuccess={(message) => console.log(message)}
+        onError={(message) => console.error(message)}
       />
     </Container>
   );

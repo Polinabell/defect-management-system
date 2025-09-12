@@ -10,13 +10,13 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { SnackbarProvider } from 'notistack';
 import { HelmetProvider } from 'react-helmet-async';
 
-import { store } from './store/index.ts';
-import { theme } from './theme/index.ts';
-import { AppRoutes } from './routes/index.tsx';
-import { AuthProvider } from './contexts/AuthContext.tsx';
-import { LoadingProvider } from './contexts/LoadingContext.tsx';
-import { NotificationProvider } from './contexts/NotificationContext.tsx';
-import ErrorBoundary from './components/common/ErrorBoundary.tsx';
+import { store } from './store/index';
+import { theme } from './theme/index';
+import { AppRoutes } from './routes/index';
+import { AuthProvider } from './contexts/AuthContext';
+import { LoadingProvider } from './contexts/LoadingContext';
+import { NotificationProvider } from './contexts/NotificationContext';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
 // Настройка React Query
 const queryClient = new QueryClient({

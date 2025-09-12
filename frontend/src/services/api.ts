@@ -227,6 +227,7 @@ const MOCK_DEFECTS: Defect[] = [
     location: 'Офисный блок A',
     floor: '5',
     room: 'Переговорная 502',
+    is_overdue: false,
     comments_count: 6,
     created_at: '2024-08-15T12:00:00Z',
     updated_at: '2024-08-25T10:15:00Z'
@@ -500,9 +501,14 @@ export const defectsAPI = {
     
     // Имитация создания дефекта из FormData
     const formDataObj: any = {};
-    for (const [key, value] of data.entries()) {
+    // Используем альтернативный способ для совместимости
+    const entries: [string, FormDataEntryValue][] = [];
+    data.forEach((value, key) => {
+      entries.push([key, value]);
+    });
+    entries.forEach(([key, value]) => {
       formDataObj[key] = value;
-    }
+    });
     
     const newDefect: Defect = {
       id: Math.max(...MOCK_DEFECTS.map(d => d.id)) + 1,
@@ -717,7 +723,8 @@ export const authAPI = {
     if (credentials.password === 'password' && demoUsers[credentials.username as keyof typeof demoUsers]) {
       const user = demoUsers[credentials.username as keyof typeof demoUsers];
       return {
-        token: `mock_token_${user.id}`,
+        access: `mock_access_token_${user.id}`,
+        refresh: `mock_refresh_token_${user.id}`,
         user
       };
     }
@@ -737,6 +744,49 @@ export const authAPI = {
       return JSON.parse(savedUser);
     }
     throw new Error('User not found');
+  },
+
+  register: async (userData: any) => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Имитация регистрации
+    const newUser = {
+      id: Date.now(),
+      ...userData,
+      is_active: true,
+      created_at: new Date().toISOString()
+    };
+    return {
+      access: `mock_access_token_${newUser.id}`,
+      refresh: `mock_refresh_token_${newUser.id}`,
+      user: newUser
+    };
+  },
+
+  updateProfile: async (userData: any) => {
+    await new Promise(resolve => setTimeout(resolve, 800));
+    // Имитация обновления профиля
+    return { ...userData, updated_at: new Date().toISOString() };
+  },
+
+  changePassword: async (passwords: any) => {
+    await new Promise(resolve => setTimeout(resolve, 600));
+    // Имитация смены пароля
+    if (passwords.old_password !== 'password') {
+      throw new Error('Неверный текущий пароль');
+    }
+    return { success: true };
+  },
+
+  refreshToken: async (refreshToken: string) => {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    // Имитация обновления токена
+    if (!refreshToken) {
+      throw new Error('Refresh token required');
+    }
+    return {
+      access: `new_mock_access_token_${Date.now()}`,
+      refresh: refreshToken // Возвращаем тот же refresh токен
+    };
   }
 };
 

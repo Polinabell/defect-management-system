@@ -18,7 +18,7 @@ INSTALLED_APPS += [
 # Development middleware
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'silk.middleware.SilkMiddleware',
+    # 'silk.middleware.SilkyMiddleware',  # Временно отключен
 ]
 
 # Debug toolbar settings
