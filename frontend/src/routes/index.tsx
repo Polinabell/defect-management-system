@@ -10,6 +10,7 @@ import { Projects } from '../pages/Projects';
 import { Defects } from '../pages/Defects';
 import { DefectDetail } from '../pages/DefectDetail';
 import { Reports } from '../pages/Reports';
+import { Users } from '../pages/Users';
 import { Login } from '../pages/auth/Login';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -34,6 +35,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="defects" element={<Defects />} />
         <Route path="defects/:id" element={<DefectDetail />} />
         <Route path="reports" element={<Reports />} />
+        <Route path="users" element={<Users />} />
       </Route>
       <Route path="/login" element={<Navigate to="/dashboard" replace />} />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
