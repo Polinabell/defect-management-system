@@ -3,7 +3,7 @@
  */
 
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { defectsAPI } from '../../services/api';
+import { defectsAPI } from '../../services/api.ts';
 
 // Типы
 export interface Defect {
