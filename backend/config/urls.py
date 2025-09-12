@@ -23,6 +23,7 @@ api_patterns = [
     path('users/', include('apps.users.urls', namespace='users')),
     path('projects/', include('apps.projects.urls')),
     path('defects/', include('apps.defects.urls')),
+    path('common/', include('apps.common.urls')),
     # path('reports/', include('apps.reports.urls')),  # Временно отключены
 ]
 
