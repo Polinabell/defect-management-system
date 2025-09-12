@@ -35,12 +35,12 @@ import {
   Priority,
   Schedule,
 } from '@mui/icons-material';
-import { useAppSelector, useAppDispatch } from '../store';
-import { defectsAPI, commentsAPI } from '../services/api';
-import { Defect } from '../types';
-import DefectWorkflow from '../components/defects/DefectWorkflow';
-import DefectComments from '../components/defects/DefectComments';
-import { EditDefectDialog } from '../components/defects/DefectDialogs';
+import { useAppSelector, useAppDispatch } from '../store/index.ts';
+import { defectsAPI, commentsAPI } from '../services/api.ts';
+import { Defect } from '../types/index.ts';
+import DefectWorkflow from '../components/defects/DefectWorkflow.tsx';
+import DefectComments from '../components/defects/DefectComments.tsx';
+import { EditDefectDialog } from '../components/defects/DefectDialogs.tsx';
 
 interface TabPanelProps {
   children?: React.ReactNode;
