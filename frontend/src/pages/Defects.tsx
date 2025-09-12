@@ -57,7 +57,7 @@ import {
   Schedule as ScheduleIcon,
   Cancel as CancelIcon
 } from '@mui/icons-material';
-import { useAppDispatch, useAppSelector } from '../store';
+import { useAppDispatch, useAppSelector } from '../store/index.ts';
 import {
   fetchDefects,
   createDefect,
@@ -75,9 +75,9 @@ import {
   selectDefectsError,
   selectDefectsFilters,
   Defect
-} from '../store/slices/defectsSlice';
-import { fetchProjects, selectProjectsList } from '../store/slices/projectsSlice';
-import { defectsAPI } from '../services/api';
+} from '../store/slices/defectsSlice.ts';
+import { fetchProjects, selectProjectsList } from '../store/slices/projectsSlice.ts';
+import { defectsAPI } from '../services/api.ts';
 
 // Константы для статусов, приоритетов и серьезности
 const STATUS_OPTIONS = [

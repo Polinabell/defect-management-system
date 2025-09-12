@@ -61,12 +61,11 @@ import {
 
 export const Projects: React.FC = () => {
   const dispatch = useDispatch();
-  const { hasPermission, user } = useAuth();
+  const { hasPermission } = useAuth();
   const { showSuccess, showError } = useNotification();
   
   const projects = useSelector(selectProjectsList);
   const isLoading = useSelector(selectProjectsLoading);
-  const error = useSelector(selectProjectsError);
   const filters = useSelector(selectProjectsFilters);
   const pagination = useSelector(selectProjectsPagination);
   
