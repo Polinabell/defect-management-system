@@ -41,6 +41,7 @@ import {
   FilterList as FilterIcon
 } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useNotification } from '../contexts/NotificationContext';
 import {
@@ -63,6 +64,7 @@ export const Projects: React.FC = () => {
   const dispatch = useDispatch();
   const { hasPermission } = useAuth();
   const { showSuccess, showError } = useNotification();
+  const [searchParams, setSearchParams] = useSearchParams();
   
   const projects = useSelector(selectProjectsList);
   const isLoading = useSelector(selectProjectsLoading);
@@ -101,6 +103,18 @@ export const Projects: React.FC = () => {
       page: pagination.page
     }) as any);
   }, [dispatch, filters, searchTerm, pagination.page]);
+
+  // Проверка URL параметра для автоматического открытия диалога создания
+  useEffect(() => {
+    const shouldCreate = searchParams.get('create');
+    if (shouldCreate === 'true' && hasPermission('create_project')) {
+      setOpenDialog(true);
+      // Убираем параметр из URL после открытия диалога
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.delete('create');
+      setSearchParams(newSearchParams);
+    }
+  }, [searchParams, setSearchParams, hasPermission]);
 
   const handleOpenDialog = (project?: Project) => {
     if (project) {

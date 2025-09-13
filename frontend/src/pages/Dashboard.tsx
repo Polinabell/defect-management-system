@@ -168,9 +168,8 @@ export const Dashboard: React.FC = () => {
         // Получаем последние дефекты
         const recent = await defectsAPI.getDefects({ 
           page: 1, 
-          pageSize: 5, 
-          ordering: '-created_at' 
-        });
+          pageSize: 5
+        } as any);
         setRecentDefects(recent.results || []);
       } catch (error) {
         console.error('Ошибка загрузки данных дашборда:', error);
@@ -431,7 +430,7 @@ export const Dashboard: React.FC = () => {
                   variant="outlined"
                   startIcon={<AssignmentIcon />}
                   fullWidth
-                  onClick={() => navigate('/projects/create')}
+                  onClick={() => navigate('/projects?create=true')}
                   sx={{ py: 1.5 }}
                 >
                   Новый проект
