@@ -1,0 +1,655 @@
+INFO 2025-09-12 15:10:40,101 autoreload 10428 14200 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:16:06,511 signals 5776 18200 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:16:27,989 signals 13992 5776 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:17:17,014 signals 12440 17632 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:17:34,782 signals 18056 8228 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:17:56,234 signals 11972 18104 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:18:32,501 signals 20940 7284 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:18:54,365 signals 18104 11396 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:19:08,850 autoreload 10428 14200 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\base.py changed, reloading.
+WARNING 2025-09-12 20:19:09,520 signals 5420 4400 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:19:09,551 autoreload 5420 4400 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:20:30,800 signals 10456 16224 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:20:57,176 autoreload 5420 4400 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\admin.py changed, reloading.
+WARNING 2025-09-12 20:20:57,840 signals 12240 21596 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:20:57,878 autoreload 12240 21596 Watching for file changes with StatReloader
+INFO 2025-09-12 20:21:15,715 autoreload 12240 21596 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\urls.py changed, reloading.
+WARNING 2025-09-12 20:21:16,374 signals 3876 19620 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:21:16,407 autoreload 3876 19620 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:21:22,072 signals 1808 5328 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:21:28,152 signals 2868 7044 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:21:35,042 signals 11540 14484 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:21:40,783 signals 16252 11824 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:21:52,271 signals 9780 15672 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:21:58,019 signals 14000 17640 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:22:03,432 signals 21232 18100 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:22:08,447 signals 21412 14116 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:22:14,238 signals 4652 11520 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:23:31,532 signals 2344 13072 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:23:32,189 signals 19340 21756 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:23:32,230 autoreload 19340 21756 Watching for file changes with StatReloader
+INFO 2025-09-12 20:23:48,430 autoreload 19340 21756 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+INFO 2025-09-12 20:23:49,005 autoreload 3876 19620 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+WARNING 2025-09-12 20:23:49,305 signals 2168 17044 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:23:49,339 autoreload 2168 17044 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:23:49,769 signals 16660 7860 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:23:49,803 autoreload 16660 7860 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:24:02,005 signals 22204 21688 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:24:02,625 signals 18544 9768 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:24:02,657 autoreload 18544 9768 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:24:55,348 signals 10960 14688 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:24:55,965 signals 16220 22040 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:24:55,998 autoreload 16220 22040 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:38:08,033 signals 10392 20208 model_utils не установлен, детальное отслеживание изменений недоступно
+ERROR 2025-09-12 20:46:04,130 log 16220 4896 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 178, in process_response
+    self._process_response(request, response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 156, in _process_response
+    collector.finalise()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\collector.py", line 157, in finalise
+    with self.request.prof_file.storage.open(file_name, 'w+b') as f:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\base.py", line 22, in open
+    return self._open(name, mode)
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\filesystem.py", line 81, in _open
+    return File(open(self.path(name), mode))
+                ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\БОГ\\Documents\\GitHub\\defect-management-system\\backend\\media\\9d215305-9a33-47fd-a69f-51f6edc159bb.prof'
+ERROR 2025-09-12 20:46:04,207 basehttp 16220 4896 "GET / HTTP/1.1" 500 121770
+INFO 2025-09-12 20:46:04,347 basehttp 16220 4896 "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 200 29468
+INFO 2025-09-12 20:46:04,364 basehttp 16220 11616 "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 200 14879
+INFO 2025-09-12 20:46:04,371 basehttp 16220 4896 "GET /static/debug_toolbar/css/print.css HTTP/1.1" 200 43
+INFO 2025-09-12 20:46:04,454 basehttp 16220 4896 "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 200 4700
+ERROR 2025-09-12 20:46:04,519 log 16220 4896 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 178, in process_response
+    self._process_response(request, response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 156, in _process_response
+    collector.finalise()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\collector.py", line 157, in finalise
+    with self.request.prof_file.storage.open(file_name, 'w+b') as f:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\base.py", line 22, in open
+    return self._open(name, mode)
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\filesystem.py", line 81, in _open
+    return File(open(self.path(name), mode))
+                ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\БОГ\\Documents\\GitHub\\defect-management-system\\backend\\media\\877dd9a5-408e-4490-925b-f8d2bb8e8a1d.prof'
+ERROR 2025-09-12 20:46:04,550 basehttp 16220 4896 "GET /favicon.ico HTTP/1.1" 500 121678
+ERROR 2025-09-12 20:48:01,001 log 16220 4896 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 178, in process_response
+    self._process_response(request, response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 156, in _process_response
+    collector.finalise()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\collector.py", line 157, in finalise
+    with self.request.prof_file.storage.open(file_name, 'w+b') as f:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\base.py", line 22, in open
+    return self._open(name, mode)
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\filesystem.py", line 81, in _open
+    return File(open(self.path(name), mode))
+                ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\БОГ\\Documents\\GitHub\\defect-management-system\\backend\\media\\401c0a02-79cd-4b53-9380-bf7816eb7be8.prof'
+ERROR 2025-09-12 20:48:01,033 basehttp 16220 4896 "GET / HTTP/1.1" 500 121731
+ERROR 2025-09-12 20:48:01,315 log 16220 4896 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 97, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 178, in process_response
+    self._process_response(request, response)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\middleware.py", line 156, in _process_response
+    collector.finalise()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\silk\collector.py", line 157, in finalise
+    with self.request.prof_file.storage.open(file_name, 'w+b') as f:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\base.py", line 22, in open
+    return self._open(name, mode)
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\files\storage\filesystem.py", line 81, in _open
+    return File(open(self.path(name), mode))
+                ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\БОГ\\Documents\\GitHub\\defect-management-system\\backend\\media\\0f6d1eda-2955-4533-a34a-cff08ac15a9f.prof'
+ERROR 2025-09-12 20:48:01,348 basehttp 16220 4896 "GET /favicon.ico HTTP/1.1" 500 121678
+INFO 2025-09-12 20:49:46,471 autoreload 16220 22040 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+INFO 2025-09-12 20:49:46,681 autoreload 16660 7860 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+WARNING 2025-09-12 20:50:14,443 signals 16984 12384 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-12 20:50:15,327 signals 4428 9188 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:50:15,372 autoreload 4428 9188 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:50:49,334 log 4428 21444 Not Found: /api/v1/
+WARNING 2025-09-12 20:50:49,335 basehttp 4428 21444 "GET /api/v1/ HTTP/1.1" 404 18100
+WARNING 2025-09-12 20:50:55,751 log 4428 21444 Unauthorized: /api/v1/auth/
+WARNING 2025-09-12 20:50:55,752 basehttp 4428 21444 "GET /api/v1/auth/ HTTP/1.1" 401 82
+INFO 2025-09-12 20:51:31,206 autoreload 4428 9188 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+WARNING 2025-09-12 20:51:31,994 signals 16680 16076 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:51:32,028 autoreload 16680 16076 Watching for file changes with StatReloader
+WARNING 2025-09-12 20:51:46,948 log 16680 11504 Not Found: /
+WARNING 2025-09-12 20:51:46,949 basehttp 16680 11504 "GET / HTTP/1.1" 404 17216
+INFO 2025-09-12 20:51:47,016 basehttp 16680 9036 "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 200 14879
+INFO 2025-09-12 20:51:47,016 basehttp 16680 11504 "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 200 29468
+INFO 2025-09-12 20:51:47,050 basehttp 16680 9036 "GET /static/debug_toolbar/css/print.css HTTP/1.1" 200 43
+INFO 2025-09-12 20:51:47,079 basehttp 16680 9036 "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 200 4700
+WARNING 2025-09-12 20:51:47,151 log 16680 9036 Not Found: /favicon.ico
+WARNING 2025-09-12 20:51:47,152 basehttp 16680 9036 "GET /favicon.ico HTTP/1.1" 404 17278
+INFO 2025-09-12 20:55:05,221 autoreload 16680 16076 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+WARNING 2025-09-12 20:55:06,083 signals 1272 15552 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:55:06,126 autoreload 1272 15552 Watching for file changes with StatReloader
+INFO 2025-09-12 20:57:43,278 autoreload 1272 15552 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\development.py changed, reloading.
+WARNING 2025-09-12 20:57:44,100 signals 22092 7796 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 20:57:44,144 autoreload 22092 7796 Watching for file changes with StatReloader
+INFO 2025-09-12 21:10:14,079 autoreload 22092 7796 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\common\permissions.py changed, reloading.
+WARNING 2025-09-12 21:10:15,140 signals 18932 10040 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-12 21:10:15,182 autoreload 18932 10040 Watching for file changes with StatReloader
+INFO 2025-09-12 21:30:41,915 autoreload 18932 10040 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\common\models.py changed, reloading.
+INFO 2025-09-12 21:30:42,675 autoreload 19452 2376 Watching for file changes with StatReloader
+INFO 2025-09-12 21:37:17,910 autoreload 19452 2376 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\base.py changed, reloading.
+INFO 2025-09-12 21:37:20,206 autoreload 8308 15892 Watching for file changes with StatReloader
+INFO 2025-09-12 21:37:40,593 autoreload 8308 15892 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\__init__.py changed, reloading.
+WARNING 2025-09-13 06:05:02,976 signals 12480 21288 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:06:26,719 signals 10080 5424 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:06:41,320 signals 19744 4652 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:06:57,127 signals 16284 12664 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:07:12,059 signals 9164 12444 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:07:32,741 signals 19404 4536 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:07:43,517 signals 16604 2284 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:08:32,931 signals 16672 12632 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:10:03,802 signals 7532 10648 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:10:38,608 signals 15904 17736 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:10:43,349 signals 19476 11164 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:10:50,094 signals 12044 21400 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:12:27,319 signals 6540 16312 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:12:59,046 signals 12044 16544 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 06:12:59,526 signals 5200 20200 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 06:12:59,554 autoreload 5200 20200 Watching for file changes with StatReloader
+WARNING 2025-09-13 06:20:29,057 log 5200 17060 Not Found: /images/defects/floor-defect.jpg
+WARNING 2025-09-13 06:20:29,057 basehttp 5200 17060 "GET /images/defects/floor-defect.jpg HTTP/1.1" 404 17002
+INFO 2025-09-13 17:13:25,468 autoreload 5200 20200 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\base.py changed, reloading.
+WARNING 2025-09-13 17:13:26,277 signals 17868 16848 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 17:13:26,324 autoreload 17868 16848 Watching for file changes with StatReloader
+WARNING 2025-09-13 17:13:35,761 signals 8952 15992 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 17:13:42,101 signals 5312 516 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 17:14:23,328 autoreload 17868 16848 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\urls.py changed, reloading.
+WARNING 2025-09-13 17:14:23,923 signals 20776 7164 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 17:14:23,957 autoreload 20776 7164 Watching for file changes with StatReloader
+INFO 2025-09-13 17:15:25,360 autoreload 20776 7164 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\reports\views.py changed, reloading.
+WARNING 2025-09-13 17:15:26,022 signals 9996 6696 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 17:15:26,051 autoreload 9996 6696 Watching for file changes with StatReloader
+INFO 2025-09-13 17:22:24,601 basehttp 9996 11036 "GET /health/ HTTP/1.1" 200 67
+WARNING 2025-09-13 17:22:31,874 log 9996 13428 Unauthorized: /api/v1/reports/charts/
+WARNING 2025-09-13 17:22:31,875 basehttp 9996 13428 "GET /api/v1/reports/charts/?type=defects_by_status HTTP/1.1" 401 82
+WARNING 2025-09-13 22:14:45,971 signals 5112 11252 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-13 22:14:46,477 signals 2772 16348 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 22:14:46,507 autoreload 2772 16348 Watching for file changes with StatReloader
+WARNING 2025-09-13 22:23:27,588 log 2772 20596 Not Found: /
+WARNING 2025-09-13 22:23:27,589 basehttp 2772 20596 "GET / HTTP/1.1" 404 16860
+INFO 2025-09-13 22:23:27,697 basehttp 2772 12808 "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2025-09-13 22:23:27,697 basehttp 2772 20596 "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2025-09-13 22:23:27,723 basehttp 2772 20596 "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2025-09-13 22:23:27,740 basehttp 2772 20596 "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+WARNING 2025-09-13 22:23:27,782 log 2772 20596 Not Found: /favicon.ico
+WARNING 2025-09-13 22:23:27,782 basehttp 2772 20596 "GET /favicon.ico HTTP/1.1" 404 16922
+WARNING 2025-09-13 22:23:41,644 log 2772 20596 Not Found: /
+WARNING 2025-09-13 22:23:41,644 basehttp 2772 20596 "GET / HTTP/1.1" 404 16860
+INFO 2025-09-13 22:26:45,711 autoreload 2772 16348 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\urls.py changed, reloading.
+WARNING 2025-09-13 22:26:46,272 signals 11680 9788 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 22:26:46,302 autoreload 11680 9788 Watching for file changes with StatReloader
+INFO 2025-09-13 22:26:52,082 autoreload 11680 9788 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\urls.py changed, reloading.
+WARNING 2025-09-13 22:26:52,616 signals 17076 2232 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-13 22:26:52,648 autoreload 17076 2232 Watching for file changes with StatReloader
+INFO 2025-09-13 22:28:37,075 basehttp 17076 7228 "GET / HTTP/1.1" 200 214
+WARNING 2025-09-13 22:30:54,249 log 17076 1676 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-13 22:30:54,256 basehttp 17076 1676 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+INFO 2025-09-14 07:38:42,088 basehttp 17076 16864 "GET / HTTP/1.1" 200 214
+INFO 2025-09-14 07:41:07,280 autoreload 17076 2232 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\reports\views.py changed, reloading.
+WARNING 2025-09-14 07:41:08,045 signals 8656 6976 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 07:41:08,094 autoreload 8656 6976 Watching for file changes with StatReloader
+INFO 2025-09-14 07:41:25,569 autoreload 8656 6976 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\reports\urls.py changed, reloading.
+WARNING 2025-09-14 07:41:26,124 signals 5944 16032 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 07:41:26,158 autoreload 5944 16032 Watching for file changes with StatReloader
+INFO 2025-09-14 07:45:26,699 basehttp 5944 10484 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+INFO 2025-09-14 07:45:26,701 basehttp 5944 16620 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-14 07:45:26,730 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:45:26,731 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:45:26,742 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:45:26,743 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:46:41,239 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:46:41,239 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:46:41,251 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:46:41,252 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:50:43,344 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:50:43,344 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:50:43,362 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:50:43,363 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:50:45,781 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:50:45,783 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:50:45,815 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:50:45,815 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:52:27,091 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:52:27,092 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 07:52:27,111 log 5944 10484 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 07:52:27,112 basehttp 5944 10484 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 08:00:18,321 basehttp 5944 15684 "GET /health/ HTTP/1.1" 200 67
+WARNING 2025-09-14 08:00:18,413 log 5944 15684 Not Found: /favicon.ico
+WARNING 2025-09-14 08:00:18,413 basehttp 5944 15684 "GET /favicon.ico HTTP/1.1" 404 17039
+WARNING 2025-09-14 08:02:15,800 log 5944 16456 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 08:02:15,806 basehttp 5944 16456 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 08:02:15,825 log 5944 16456 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 08:02:15,826 basehttp 5944 16456 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 12:24:12,334 basehttp 5944 21024 "GET /health/ HTTP/1.1" 200 67
+INFO 2025-09-14 12:33:37,112 basehttp 5944 11848 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+INFO 2025-09-14 12:33:37,112 basehttp 5944 9596 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-14 12:33:37,138 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:33:37,140 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:33:37,161 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:33:37,163 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:33:39,682 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:33:39,685 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:33:39,719 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:33:39,721 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:36:41,151 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:36:41,152 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:36:41,176 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:36:41,178 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:36:57,784 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:36:57,784 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 12:36:57,813 log 5944 9596 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 12:36:57,813 basehttp 5944 9596 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 16:21:58,879 signals 7244 14920 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:22:02,604 signals 14004 10884 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:22:49,092 signals 5056 15260 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:22:49,895 signals 15604 6236 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 16:22:49,934 autoreload 15604 6236 Watching for file changes with StatReloader
+WARNING 2025-09-14 16:23:06,452 signals 18132 16004 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:23:07,100 signals 13948 17300 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 16:23:07,153 autoreload 13948 17300 Watching for file changes with StatReloader
+WARNING 2025-09-14 16:25:50,483 signals 9308 15704 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:25:51,075 signals 5344 17972 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 16:25:51,117 autoreload 5344 17972 Watching for file changes with StatReloader
+WARNING 2025-09-14 16:26:57,783 signals 10272 17216 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 16:26:58,317 signals 18012 16328 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 16:26:58,350 autoreload 18012 16328 Watching for file changes with StatReloader
+WARNING 2025-09-14 17:39:26,514 signals 10356 18200 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 17:39:40,056 signals 8292 4736 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 17:39:55,980 signals 18252 15048 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 17:39:56,316 signals 18252 15048 Создан профиль для пользователя admin@example.com
+INFO 2025-09-14 17:39:56,320 signals 18252 15048 Создан новый пользователь: admin@example.com с ролью engineer
+WARNING 2025-09-14 17:40:07,300 signals 13936 17176 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-14 17:40:08,168 signals 4308 17512 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 17:40:08,225 autoreload 4308 17512 Watching for file changes with StatReloader
+INFO 2025-09-14 17:41:12,290 basehttp 4308 5240 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+INFO 2025-09-14 17:41:12,292 basehttp 4308 5644 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-14 17:41:12,748 log 4308 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:41:12,750 basehttp 4308 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:41:12,776 log 4308 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:41:12,777 basehttp 4308 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:41:15,562 log 4308 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:41:15,563 basehttp 4308 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:41:15,605 log 4308 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:41:15,606 basehttp 4308 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:41:39,926 log 4308 15824 Not Found: /api/health/
+WARNING 2025-09-14 17:41:39,927 basehttp 4308 15824 "GET /api/health/ HTTP/1.1" 404 17039
+INFO 2025-09-14 17:41:46,539 basehttp 4308 1712 "GET /health/ HTTP/1.1" 200 67
+WARNING 2025-09-14 17:41:54,324 log 4308 17488 Not Found: /api/v1/
+WARNING 2025-09-14 17:41:54,324 basehttp 4308 17488 "GET /api/v1/ HTTP/1.1" 404 17883
+INFO 2025-09-14 17:42:03,117 basehttp 4308 15668 "GET / HTTP/1.1" 200 214
+INFO 2025-09-14 17:43:01,569 basehttp 4308 16180 "GET / HTTP/1.1" 200 214
+WARNING 2025-09-14 17:43:01,703 log 4308 16180 Not Found: /favicon.ico
+WARNING 2025-09-14 17:43:01,703 basehttp 4308 16180 "GET /favicon.ico HTTP/1.1" 404 17039
+INFO 2025-09-14 17:43:07,477 basehttp 4308 16180 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-14 17:43:07,616 basehttp 4308 16180 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 18380
+INFO 2025-09-14 17:43:07,744 basehttp 4308 8724 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+INFO 2025-09-14 17:43:07,744 basehttp 4308 9156 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+INFO 2025-09-14 17:43:07,744 basehttp 4308 16180 "GET /static/admin/css/base.css HTTP/1.1" 200 21207
+INFO 2025-09-14 17:43:07,748 basehttp 4308 16180 "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2025-09-14 17:43:07,750 basehttp 4308 16180 "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2025-09-14 17:43:07,759 basehttp 4308 8724 "GET /static/admin/css/login.css HTTP/1.1" 200 958
+INFO 2025-09-14 17:43:07,759 basehttp 4308 9156 "GET /static/admin/css/responsive.css HTTP/1.1" 200 18533
+INFO 2025-09-14 17:43:07,762 basehttp 4308 9156 "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2025-09-14 17:43:07,765 basehttp 4308 9156 "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2025-09-14 17:43:07,781 basehttp 4308 16180 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2025-09-14 17:43:07,781 basehttp 4308 8724 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+WARNING 2025-09-14 17:43:57,873 signals 4308 16180 Неудачная попытка входа для admin с IP 127.0.0.1
+INFO 2025-09-14 17:43:57,889 basehttp 4308 16180 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 18621
+WARNING 2025-09-14 17:44:08,820 signals 4308 16180 Неудачная попытка входа для admin с IP 127.0.0.1
+INFO 2025-09-14 17:44:08,836 basehttp 4308 16180 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 18621
+ERROR 2025-09-14 17:44:50,318 log 4308 16180 Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\admin\sites.py", line 441, in login
+    return LoginView.as_view(**defaults)(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\debug.py", line 92, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 90, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\views.py", line 109, in form_valid
+    auth_login(self.request, form.get_user())
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\__init__.py", line 144, in login
+    user_logged_in.send(sender=user.__class__, request=request, user=user)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\dispatch\dispatcher.py", line 177, in send
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\models.py", line 23, in update_last_login
+    user.save(update_fields=["last_login"])
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save_base
+    post_save.send(
+    ~~~~~~~~~~~~~~^
+        sender=origin,
+        ^^^^^^^^^^^^^^
+    ...<4 lines>...
+        using=using,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\БОГ\AppData\Roaming\Python\Python313\site-packages\django\dispatch\dispatcher.py", line 177, in send
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\signals.py", line 145, in log_user_changes
+    if instance.tracker.has_changed('role'):
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'tracker'
+ERROR 2025-09-14 17:44:50,366 basehttp 4308 16180 "POST /admin/login/?next=/admin/ HTTP/1.1" 500 201113
+INFO 2025-09-14 17:45:29,136 autoreload 4308 17512 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\signals.py changed, reloading.
+WARNING 2025-09-14 17:45:30,702 signals 13932 4280 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 17:45:30,788 autoreload 13932 4280 Watching for file changes with StatReloader
+INFO 2025-09-14 17:45:48,186 autoreload 13932 4280 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\signals.py changed, reloading.
+WARNING 2025-09-14 17:45:50,058 signals 14168 6972 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-14 17:45:50,186 autoreload 14168 6972 Watching for file changes with StatReloader
+INFO 2025-09-14 17:45:59,870 autoreload 14168 6972 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\signals.py changed, reloading.
+INFO 2025-09-14 17:46:00,836 autoreload 1952 6256 Watching for file changes with StatReloader
+INFO 2025-09-14 17:46:11,408 autoreload 15548 13556 Watching for file changes with StatReloader
+INFO 2025-09-14 17:47:26,006 basehttp 15548 17804 "GET /admin/Email HTTP/1.1" 302 0
+INFO 2025-09-14 17:47:26,051 basehttp 15548 17804 "GET /admin/login/?next=/admin/Email HTTP/1.1" 200 18394
+INFO 2025-09-14 17:47:42,673 signals 15548 17804 Обновлены данные пользователя: admin@example.com
+WARNING 2025-09-14 17:47:42,673 signals 15548 17804 Неудачная попытка входа для admin@example.com с IP 127.0.0.1
+INFO 2025-09-14 17:47:42,687 basehttp 15548 17804 "POST /admin/login/?next=/admin/Email HTTP/1.1" 200 18648
+INFO 2025-09-14 17:47:48,352 signals 15548 17804 Обновлены данные пользователя: admin@example.com
+WARNING 2025-09-14 17:47:48,352 signals 15548 17804 Неудачная попытка входа для admin@example.com с IP 127.0.0.1
+INFO 2025-09-14 17:47:48,365 basehttp 15548 17804 "POST /admin/login/?next=/admin/Email HTTP/1.1" 200 18648
+INFO 2025-09-14 17:48:40,470 signals 13152 17564 Обновлены данные пользователя: admin@example.com
+INFO 2025-09-14 17:50:17,896 autoreload 15548 13556 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\config\settings\base.py changed, reloading.
+INFO 2025-09-14 17:50:18,841 autoreload 16728 4936 Watching for file changes with StatReloader
+INFO 2025-09-14 17:50:30,478 signals 14304 17656 Создан профиль для пользователя admin@example.com
+INFO 2025-09-14 17:50:30,482 signals 14304 17656 Создан новый пользователь: admin@example.com с ролью engineer
+INFO 2025-09-14 17:50:40,339 autoreload 9760 11940 Watching for file changes with StatReloader
+INFO 2025-09-14 17:51:15,281 signals 9760 18396 Обновлены данные пользователя: admin@example.com
+INFO 2025-09-14 17:51:15,292 signals 9760 18396 Обновлены данные пользователя: admin@example.com
+INFO 2025-09-14 17:51:15,309 signals 9760 18396 Пользователь admin@example.com вошёл в систему с IP 127.0.0.1
+INFO 2025-09-14 17:51:15,333 basehttp 9760 18396 "POST /admin/login/?next=/admin/Email HTTP/1.1" 302 0
+WARNING 2025-09-14 17:51:15,370 log 9760 18396 Not Found: /admin/Email
+WARNING 2025-09-14 17:51:15,370 basehttp 9760 18396 "GET /admin/Email HTTP/1.1" 404 21463
+INFO 2025-09-14 17:51:56,605 basehttp 9760 18396 "GET /admin/users/user/ HTTP/1.1" 200 35833
+INFO 2025-09-14 17:51:56,740 basehttp 9760 18396 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6566
+INFO 2025-09-14 17:51:56,765 basehttp 9760 18396 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-14 17:51:56,765 basehttp 9760 17896 "GET /admin/jsi18n/ HTTP/1.1" 200 16066
+INFO 2025-09-14 17:51:56,796 basehttp 9760 18396 "GET /static/admin/js/core.js HTTP/1.1" 200 5682
+INFO 2025-09-14 17:51:56,797 basehttp 9760 17896 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 8943
+INFO 2025-09-14 17:51:56,803 basehttp 9760 17460 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 292458
+INFO 2025-09-14 17:51:56,823 basehttp 9760 17896 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-14 17:51:56,832 basehttp 9760 17460 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-14 17:51:56,833 basehttp 9760 18396 "GET /static/admin/js/actions.js HTTP/1.1" 200 7872
+INFO 2025-09-14 17:51:56,847 basehttp 9760 17460 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-09-14 17:51:56,850 basehttp 9760 18396 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-14 17:51:56,877 basehttp 9760 18396 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-14 17:51:56,897 basehttp 9760 17896 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+INFO 2025-09-14 17:51:56,924 basehttp 9760 17896 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-14 17:51:56,925 basehttp 9760 18396 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+WARNING 2025-09-14 17:58:07,455 log 9760 17172 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:58:07,463 basehttp 9760 17172 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:58:07,493 log 9760 17172 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:58:07,497 basehttp 9760 17172 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:58:57,089 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:58:57,090 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:58:57,125 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:58:57,125 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:59:31,100 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:59:31,100 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 17:59:31,129 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 17:59:31,130 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 18:01:23,960 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 18:01:23,961 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 18:01:23,974 log 9760 8040 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 18:01:23,974 basehttp 9760 8040 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 20:43:03,918 basehttp 9760 19916 "GET /admin/users/user/ HTTP/1.1" 200 35832
+INFO 2025-09-14 20:43:04,533 basehttp 9760 19916 "GET / HTTP/1.1" 200 214
+WARNING 2025-09-14 20:43:35,124 log 9760 17648 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 20:43:35,124 basehttp 9760 17648 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+INFO 2025-09-14 20:44:46,915 basehttp 9760 16788 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+INFO 2025-09-14 20:44:46,915 basehttp 9760 18836 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-14 20:44:46,927 log 9760 18836 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 20:44:46,927 basehttp 9760 18836 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 20:44:46,940 log 9760 18836 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 20:44:46,940 basehttp 9760 18836 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 20:46:01,085 log 9760 18836 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 20:46:01,086 basehttp 9760 18836 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 20:46:01,110 log 9760 18836 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 20:46:01,110 basehttp 9760 18836 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 20:46:18,641 basehttp 9760 19916 "GET /admin/users/user/add/ HTTP/1.1" 200 47919
+INFO 2025-09-14 20:46:18,651 basehttp 9760 19916 "GET /static/admin/css/forms.css HTTP/1.1" 200 9047
+INFO 2025-09-14 20:46:18,654 basehttp 9760 19916 "GET /static/admin/js/calendar.js HTTP/1.1" 200 8466
+INFO 2025-09-14 20:46:18,658 basehttp 9760 19916 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-14 20:46:18,688 basehttp 9760 19916 "GET /admin/jsi18n/ HTTP/1.1" 200 16066
+INFO 2025-09-14 20:46:18,692 basehttp 9760 19916 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11900
+INFO 2025-09-14 20:46:18,695 basehttp 9760 19916 "GET /static/admin/js/inlines.js HTTP/1.1" 200 15526
+INFO 2025-09-14 20:46:18,697 basehttp 9760 19916 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-14 20:46:18,699 basehttp 9760 19916 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-14 20:46:18,706 basehttp 9760 19916 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-09-14 20:46:18,708 basehttp 9760 19916 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-14 20:46:18,713 basehttp 9760 19916 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-14 20:46:39,284 basehttp 9760 19916 "GET / HTTP/1.1" 200 214
+INFO 2025-09-14 20:46:42,224 basehttp 9760 19916 "GET /admin/users/user/add/ HTTP/1.1" 200 47919
+INFO 2025-09-14 20:46:44,219 basehttp 9760 19916 "GET /admin/password_change/ HTTP/1.1" 200 28388
+INFO 2025-09-14 22:11:40,812 signals 19196 5496 Создан профиль для пользователя manager@example.com
+INFO 2025-09-14 22:11:40,818 signals 19196 5496 Создан новый пользователь: manager@example.com с ролью manager
+INFO 2025-09-14 22:12:14,886 signals 9308 6548 Создан профиль для пользователя engineer@example.com
+INFO 2025-09-14 22:12:14,890 signals 9308 6548 Создан новый пользователь: engineer@example.com с ролью engineer
+INFO 2025-09-14 22:12:14,896 signals 9308 6548 Создан новый проект: Тестовый проект (менеджер: Тестовый Менеджер)
+INFO 2025-09-14 22:12:14,899 signals 9308 6548 Пользователь Тестовый Менеджер добавлен в проект Тестовый проект с ролью Менеджер
+INFO 2025-09-14 22:12:14,902 signals 9308 6548 Менеджер Тестовый Менеджер автоматически добавлен в проект Тестовый проект
+INFO 2025-09-14 22:12:14,912 signals 9308 6548 Создан новый проект: Жилой комплекс "Тестовый" (менеджер: Тестовый Менеджер)
+INFO 2025-09-14 22:12:14,921 signals 9308 6548 Пользователь Тестовый Менеджер добавлен в проект Жилой комплекс "Тестовый" с ролью Менеджер
+INFO 2025-09-14 22:12:14,925 signals 9308 6548 Менеджер Тестовый Менеджер автоматически добавлен в проект Жилой комплекс "Тестовый"
+INFO 2025-09-14 22:15:51,494 basehttp 9760 21436 "GET / HTTP/1.1" 200 214
+INFO 2025-09-14 22:15:52,717 basehttp 9760 21436 "GET /admin/password_change/ HTTP/1.1" 200 28388
+INFO 2025-09-14 22:15:52,730 basehttp 9760 18440 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,730 basehttp 9760 21436 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,730 basehttp 9760 17656 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,733 basehttp 9760 18440 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,745 basehttp 9760 17656 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,746 basehttp 9760 18440 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:52,754 basehttp 9760 18440 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-09-14 22:15:55,078 basehttp 9760 18440 "GET /admin/ HTTP/1.1" 200 29170
+INFO 2025-09-14 22:15:55,086 basehttp 9760 18440 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+WARNING 2025-09-14 22:16:08,897 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:16:08,898 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:16:08,921 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:16:08,921 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:17:43,965 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:17:43,965 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:17:44,002 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:17:44,003 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:18:48,920 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:18:48,921 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:18:48,941 log 9760 2156 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:18:48,942 basehttp 9760 2156 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:09,513 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:09,513 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:09,526 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:09,527 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:15,045 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:15,047 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:15,072 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:15,073 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:18,828 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:18,830 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:29:18,854 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:18,854 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-15&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 22:29:24,593 basehttp 9760 9656 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-14 22:29:24,626 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:24,627 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-14 22:29:30,455 basehttp 9760 9656 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2024-01-01&date_to=2024-12-31&project_id=1 HTTP/1.1" 200 0
+WARNING 2025-09-14 22:29:30,477 log 9760 9656 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-14 22:29:30,477 basehttp 9760 9656 "GET /api/v1/reports/dashboard-data/?date_from=2024-01-01&date_to=2024-12-31&project_id=1 HTTP/1.1" 401 82
+WARNING 2025-09-14 22:32:25,923 log 9760 18496 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 22:32:25,923 basehttp 9760 18496 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-14 22:42:51,133 log 9760 4348 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 22:42:51,134 basehttp 9760 4348 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-14 22:44:56,046 log 9760 14540 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 22:44:56,047 basehttp 9760 14540 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17120
+WARNING 2025-09-14 22:46:04,217 log 9760 21244 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 22:46:04,218 basehttp 9760 21244 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-14 22:46:15,331 log 9760 13916 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-14 22:46:15,337 basehttp 9760 13916 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-15 09:38:32,479 log 9760 20888 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-15 09:38:32,480 basehttp 9760 20888 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-15 09:38:37,247 log 9760 21020 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-15 09:38:37,253 basehttp 9760 21020 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-15 09:38:41,677 log 9760 14196 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-15 09:38:41,678 basehttp 9760 14196 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+INFO 2025-09-15 09:40:04,430 basehttp 9760 21012 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-15 09:40:04,464 basehttp 9760 21012 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 18379
+INFO 2025-09-15 09:40:05,819 basehttp 9760 21012 "GET / HTTP/1.1" 200 214
+WARNING 2025-09-15 09:41:17,900 log 9760 20676 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-15 09:41:17,900 basehttp 9760 20676 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+WARNING 2025-09-15 09:41:26,607 log 9760 20716 Not Found: /api/attachments/1/download
+WARNING 2025-09-15 09:41:26,612 basehttp 9760 20716 "GET /api/attachments/1/download HTTP/1.1" 404 17099
+WARNING 2025-09-15 09:41:46,361 log 9760 17912 Not Found: /images/defects/crack-wall-1.jpg
+WARNING 2025-09-15 09:41:46,362 basehttp 9760 17912 "GET /images/defects/crack-wall-1.jpg HTTP/1.1" 404 17119
+INFO 2025-09-15 09:41:59,214 basehttp 9760 5644 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-16&date_to=2025-09-15 HTTP/1.1" 200 0
+INFO 2025-09-15 09:41:59,216 basehttp 9760 11936 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-16&date_to=2025-09-15 HTTP/1.1" 200 0
+WARNING 2025-09-15 09:41:59,225 log 9760 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-15 09:41:59,226 basehttp 9760 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-16&date_to=2025-09-15 HTTP/1.1" 401 82
+WARNING 2025-09-15 09:41:59,248 log 9760 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-15 09:41:59,249 basehttp 9760 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-16&date_to=2025-09-15 HTTP/1.1" 401 82
+INFO 2025-09-15 09:42:05,165 basehttp 9760 5644 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-15 HTTP/1.1" 200 0
+WARNING 2025-09-15 09:42:05,189 log 9760 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-15 09:42:05,190 basehttp 9760 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-15 HTTP/1.1" 401 82
+INFO 2025-09-15 09:42:10,720 basehttp 9760 5644 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-14 HTTP/1.1" 200 0
+WARNING 2025-09-15 09:42:10,742 log 9760 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-15 09:42:10,743 basehttp 9760 5644 "GET /api/v1/reports/dashboard-data/?date_from=2025-08-14&date_to=2025-09-14 HTTP/1.1" 401 82
+INFO 2025-09-15 09:42:21,648 basehttp 9760 5644 "OPTIONS /api/v1/reports/dashboard-data/?date_from=2024-01-01&date_to=2024-12-31&project_id=1 HTTP/1.1" 200 0
+WARNING 2025-09-15 09:42:21,668 log 9760 5644 Unauthorized: /api/v1/reports/dashboard-data/
+WARNING 2025-09-15 09:42:21,668 basehttp 9760 5644 "GET /api/v1/reports/dashboard-data/?date_from=2024-01-01&date_to=2024-12-31&project_id=1 HTTP/1.1" 401 82
+INFO 2025-09-15 09:43:39,843 signals 9760 21012 Обновлены данные пользователя: admin@example.com
+INFO 2025-09-15 09:43:39,855 signals 9760 21012 Обновлены данные пользователя: admin@example.com
+INFO 2025-09-15 09:43:39,864 signals 9760 21012 Пользователь admin@example.com вошёл в систему с IP 127.0.0.1
+INFO 2025-09-15 09:43:39,893 basehttp 9760 21012 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-09-15 09:43:39,954 basehttp 9760 21012 "GET /admin/ HTTP/1.1" 200 29170
+INFO 2025-09-15 09:43:39,965 basehttp 9760 21012 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,965 basehttp 9760 19828 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,967 basehttp 9760 19828 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,967 basehttp 9760 21012 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,969 basehttp 9760 19828 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,969 basehttp 9760 21012 "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,971 basehttp 9760 19828 "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,976 basehttp 9760 21012 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,976 basehttp 9760 19828 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,978 basehttp 9760 19828 "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,978 basehttp 9760 21012 "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,980 basehttp 9760 21012 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,981 basehttp 9760 19828 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:39,982 basehttp 9760 21012 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,152 basehttp 9760 21012 "GET /admin/reports/analyticsquery/add/ HTTP/1.1" 200 41943
+INFO 2025-09-15 09:43:46,163 basehttp 9760 17912 "GET /static/admin/js/collapse.js HTTP/1.1" 200 1803
+INFO 2025-09-15 09:43:46,165 basehttp 9760 17912 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,168 basehttp 9760 20100 "GET /static/admin/js/vendor/select2/i18n/ru.js HTTP/1.1" 200 1171
+INFO 2025-09-15 09:43:46,168 basehttp 9760 21012 "GET /static/admin/css/vendor/select2/select2.css HTTP/1.1" 200 17358
+INFO 2025-09-15 09:43:46,170 basehttp 9760 20388 "GET /static/admin/js/autocomplete.js HTTP/1.1" 200 1060
+INFO 2025-09-15 09:43:46,171 basehttp 9760 19828 "GET /static/admin/css/autocomplete.css HTTP/1.1" 200 9114
+INFO 2025-09-15 09:43:46,173 basehttp 9760 21012 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,174 basehttp 9760 21012 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,175 basehttp 9760 20388 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,176 basehttp 9760 20100 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,177 basehttp 9760 21012 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,178 basehttp 9760 19828 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,180 basehttp 9760 20100 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,182 basehttp 9760 20388 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,182 basehttp 9760 19828 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,184 basehttp 9760 21012 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,185 basehttp 9760 20100 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,190 basehttp 9760 20300 "GET /static/admin/js/vendor/select2/select2.full.js HTTP/1.1" 200 173566
+INFO 2025-09-15 09:43:46,193 basehttp 9760 20300 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-09-15 09:43:46,214 basehttp 9760 17912 "GET /admin/jsi18n/ HTTP/1.1" 200 16066
+INFO 2025-09-15 09:43:49,622 basehttp 9760 17912 "GET /admin/reports/reporttemplate/add/ HTTP/1.1" 200 41053
+INFO 2025-09-15 09:43:49,658 basehttp 9760 17912 "GET /admin/jsi18n/ HTTP/1.1" 200 16066
+INFO 2025-09-15 09:43:55,688 basehttp 9760 17912 "GET /admin/ HTTP/1.1" 200 29170
+INFO 2025-09-15 19:17:41,241 basehttp 9760 13824 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-15 19:17:41,263 basehttp 9760 13824 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 18379
+INFO 2025-09-15 19:17:43,252 basehttp 9760 13824 "GET / HTTP/1.1" 200 214
+INFO 2025-09-15 19:35:57,341 autoreload 9760 11940 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\admin.py changed, reloading.
