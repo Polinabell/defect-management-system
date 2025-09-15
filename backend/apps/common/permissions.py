@@ -6,6 +6,23 @@ from rest_framework import permissions
 from rest_framework.permissions import BasePermission
 
 
+class CanManageUsers(BasePermission):
+    """Разрешение на управление пользователями"""
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and (
+            request.user.is_staff or
+            getattr(request.user, 'role', 'observer') == 'manager'
+        )
+
+
+class IsOwnerOrReadOnly(BasePermission):
+    """Разрешение на редактирование только владельцем"""
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return obj.created_by == request.user or request.user.is_staff
+
+
 class IsProjectMember(BasePermission):
     """
     Право доступа: пользователь является участником проекта
