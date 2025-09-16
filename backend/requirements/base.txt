@@ -31,3 +31,9 @@ phonenumbers==8.13.25
 # Логирование и мониторинг
 django-structlog==5.0.0
 structlog==23.2.0
+
+# Обработка Excel файлов
+openpyxl==3.1.2
+
+# Дополнительные утилиты
+django-model-utils==4.3.1
