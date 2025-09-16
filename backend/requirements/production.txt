@@ -13,8 +13,14 @@ django-health-check==3.17.0
 django-redis==5.4.0
 
 # Безопасность
-django-security==0.18.0
 django-csp==3.7
 
 # Производительность
 django-cachalot==2.6.1
+
+# Фиксы совместимости
+django-environ==0.11.2
+
+# Debug toolbar для development режима
+django-debug-toolbar==4.2.0
+django-silk==5.0.4
