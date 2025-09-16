@@ -4,6 +4,7 @@
 
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -231,53 +232,39 @@ class ChangePasswordSerializer(serializers.Serializer):
         return user
 
 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+class CustomTokenObtainPairSerializer(serializers.Serializer):
     """
     Кастомный сериализатор для получения JWT токенов
     """
+    username = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
+    password = serializers.CharField(required=True)
+    
+    def get_token(self, user):
+        """Получение токена для пользователя"""
+        return RefreshToken.for_user(user)
     
     def validate(self, attrs):
         """Валидация и аутентификация"""
-        email = attrs.get('email') or attrs.get('username')
+        username_or_email = attrs.get('email') or attrs.get('username')
         password = attrs.get('password')
         
-        if not email or not password:
-            raise serializers.ValidationError('Email и пароль обязательны.')
+        if not username_or_email or not password:
+            raise serializers.ValidationError('Email/Username и пароль обязательны.')
         
-        # Находим пользователя по email
+        # Находим пользователя по email или username
         try:
-            user = User.objects.get(email=email)
+            if '@' in username_or_email:
+                user = User.objects.get(email=username_or_email)
+            else:
+                user = User.objects.get(username=username_or_email)
         except User.DoesNotExist:
             raise serializers.ValidationError('Неверные учётные данные.')
-        
-        # Проверяем блокировку аккаунта
-        if user.is_locked:
-            raise serializers.ValidationError('Аккаунт временно заблокирован. Попробуйте позже.')
-        
-        # Проверяем активность аккаунта
-        if not user.is_active:
-            raise serializers.ValidationError('Аккаунт деактивирован.')
         
         # Аутентификация
         user = authenticate(username=user.username, password=password)
         if not user:
-            # Увеличиваем счётчик неудачных попыток
-            try:
-                failed_user = User.objects.get(email=email)
-                failed_user.increment_failed_login()
-            except User.DoesNotExist:
-                pass
-            
             raise serializers.ValidationError('Неверные учётные данные.')
-        
-        # Сбрасываем счётчик неудачных попыток
-        user.reset_failed_login()
-        
-        # Обновляем IP последнего входа
-        request = self.context.get('request')
-        if request:
-            user.last_login_ip = get_client_ip(request)
-            user.save(update_fields=['last_login_ip'])
         
         # Получаем токены
         refresh = self.get_token(user)
