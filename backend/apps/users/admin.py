@@ -15,6 +15,7 @@ class UserProfileInline(admin.StackedInline):
     Inline редактор профиля пользователя
     """
     model = UserProfile
+    fk_name = 'user'  # Указываем какое поле использовать для связи
     can_delete = False
     verbose_name = 'Профиль'
     verbose_name_plural = 'Профиль'
