@@ -24,7 +24,7 @@ from .services import ReportGenerator, AnalyticsService
 from apps.projects.models import Project
 from apps.defects.models import Defect
 from apps.common.permissions import IsProjectMember
-from celery import current_app
+# from celery import current_app  # Отключено для локального запуска
 
 
 class ReportTemplateListCreateView(generics.ListCreateAPIView):
