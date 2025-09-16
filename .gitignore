@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+venv/
 *.py[cod]
 *$py.class
 *.so
@@ -82,6 +83,15 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
+
+# Project-specific exclusions
+# Technical specifications and documentation files that don't belong in code
+*.docx
+*.doc
+*.pdf
+*техническое*задание*
+*ТЗ*
+*specification*
 
 # Docker
 .dockerignore
