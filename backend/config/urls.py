@@ -19,7 +19,6 @@ def health_check(request):
 
 # API patterns
 api_patterns = [
-    path('auth/', include('apps.users.urls')),
     path('users/', include('apps.users.urls')),
     path('projects/', include('apps.projects.urls')),
     path('defects/', include('apps.defects.urls')),
