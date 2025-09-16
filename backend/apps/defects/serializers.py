@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from .models import Defect, DefectCategory, DefectFile, DefectComment, DefectHistory
 from apps.projects.models import Project, ProjectStage
+from apps.common.models import Priority
 from apps.common.utils import FileUploadHandler
 
 User = get_user_model()
@@ -489,7 +490,7 @@ class DefectSearchSerializer(serializers.Serializer):
         required=False
     )
     priority = serializers.MultipleChoiceField(
-        choices=Defect.Priority.choices,
+        choices=Priority.choices,
         required=False
     )
     severity = serializers.MultipleChoiceField(
