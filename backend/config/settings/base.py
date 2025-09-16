@@ -50,12 +50,19 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'apps.common.middleware.RequestIDMiddleware',
+    'apps.common.middleware.RequestLoggingMiddleware',
+    'apps.common.middleware.RateLimitMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.common.middleware.SecurityHeadersMiddleware',
+    'apps.common.middleware.CacheControlMiddleware',
+    'apps.common.middleware.HealthCheckMiddleware',
+    'apps.common.middleware.JSONResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -288,3 +295,59 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@defects.local
 # Phone number settings
 PHONENUMBER_DEFAULT_REGION = 'RU'
 PHONENUMBER_DEFAULT_FORMAT = 'NATIONAL'
+
+# API Rate Limiting
+API_RATE_LIMIT = {
+    'requests': config('API_RATE_LIMIT_REQUESTS', default=1000, cast=int),
+    'window': config('API_RATE_LIMIT_WINDOW', default=3600, cast=int),  # 1 hour
+}
+
+# Application version
+VERSION = config('VERSION', default='1.0.0')
+
+# Feature flags
+FEATURE_FLAGS = {
+    'ENABLE_NOTIFICATIONS': config('ENABLE_NOTIFICATIONS', default=True, cast=bool),
+    'ENABLE_FILE_UPLOAD': config('ENABLE_FILE_UPLOAD', default=True, cast=bool),
+    'ENABLE_ANALYTICS': config('ENABLE_ANALYTICS', default=True, cast=bool),
+    'ENABLE_AUDIT_LOG': config('ENABLE_AUDIT_LOG', default=True, cast=bool),
+}
+
+# Monitoring and health check settings
+HEALTH_CHECK_SETTINGS = {
+    'DATABASE_TIMEOUT': config('DATABASE_TIMEOUT', default=5, cast=int),
+    'CACHE_TIMEOUT': config('CACHE_TIMEOUT', default=2, cast=int),
+    'EXTERNAL_SERVICES_TIMEOUT': config('EXTERNAL_SERVICES_TIMEOUT', default=10, cast=int),
+}
+
+# File processing settings
+FILE_PROCESSING = {
+    'MAX_IMAGE_SIZE': config('MAX_IMAGE_SIZE', default=10*1024*1024, cast=int),  # 10MB
+    'MAX_DOCUMENT_SIZE': config('MAX_DOCUMENT_SIZE', default=50*1024*1024, cast=int),  # 50MB
+    'MAX_VIDEO_SIZE': config('MAX_VIDEO_SIZE', default=100*1024*1024, cast=int),  # 100MB
+    'ALLOWED_IMAGE_FORMATS': ['JPEG', 'PNG', 'GIF', 'WEBP'],
+    'ALLOWED_DOCUMENT_FORMATS': ['PDF', 'DOC', 'DOCX', 'XLS', 'XLSX', 'TXT'],
+    'THUMBNAIL_SIZE': (300, 300),
+}
+
+# Notification settings
+NOTIFICATIONS = {
+    'SEND_EMAIL': config('SEND_EMAIL_NOTIFICATIONS', default=False, cast=bool),
+    'SEND_SMS': config('SEND_SMS_NOTIFICATIONS', default=False, cast=bool),
+    'EMAIL_TEMPLATES_DIR': BASE_DIR / 'templates' / 'emails',
+}
+
+# Analytics and reporting
+ANALYTICS = {
+    'ENABLE_TRACKING': config('ENABLE_USER_TRACKING', default=True, cast=bool),
+    'RETENTION_DAYS': config('ANALYTICS_RETENTION_DAYS', default=90, cast=int),
+    'BATCH_SIZE': config('ANALYTICS_BATCH_SIZE', default=1000, cast=int),
+}
+
+# Backup settings
+BACKUP_SETTINGS = {
+    'ENABLE_AUTO_BACKUP': config('ENABLE_AUTO_BACKUP', default=False, cast=bool),
+    'BACKUP_SCHEDULE': config('BACKUP_SCHEDULE', default='0 2 * * *'),  # Cron format
+    'BACKUP_RETENTION_DAYS': config('BACKUP_RETENTION_DAYS', default=30, cast=int),
+    'BACKUP_LOCATION': config('BACKUP_LOCATION', default=str(BASE_DIR / 'backups')),
+}

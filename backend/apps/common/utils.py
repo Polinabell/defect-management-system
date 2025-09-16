@@ -304,14 +304,90 @@ def get_model_changes(instance, original_data: Dict[str, Any]) -> Dict[str, Dict
     Получение изменений модели для логирования
     """
     changes = {}
-    
+
     for field_name, original_value in original_data.items():
         current_value = getattr(instance, field_name, None)
-        
+
         if current_value != original_value:
             changes[field_name] = {
                 'old': original_value,
                 'new': current_value
             }
-    
+
     return changes
+
+
+def mask_sensitive_data(data: str, mask_char: str = '*') -> str:
+    """
+    Маскировка чувствительных данных
+    """
+    if not data or len(data) < 4:
+        return mask_char * len(data) if data else ''
+
+    # Для email адресов
+    if '@' in data:
+        username, domain = data.split('@')
+        if len(username) > 2:
+            masked_username = username[:1] + mask_char * (len(username) - 2) + username[-1:]
+        else:
+            masked_username = mask_char * len(username)
+        return f"{masked_username}@{domain}"
+
+    # Для обычных строк - показываем первый и последний символы
+    return data[0] + mask_char * (len(data) - 2) + data[-1]
+
+
+def create_audit_log(user, action: str, model_instance, changes: Optional[Dict] = None):
+    """
+    Создание записи в журнале аудита
+    """
+    from django.contrib.contenttypes.models import ContentType
+
+    try:
+        from apps.common.models import AuditLog
+
+        content_type = ContentType.objects.get_for_model(model_instance)
+
+        AuditLog.objects.create(
+            user=user,
+            action=action,
+            content_type=content_type,
+            object_id=model_instance.pk,
+            object_repr=str(model_instance),
+            changes=changes or {},
+            ip_address=getattr(user, '_current_ip', None) if hasattr(user, '_current_ip') else None
+        )
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Ошибка создания записи аудита: {str(e)}")
+
+
+def paginate_queryset(queryset, page: int = 1, per_page: int = 20):
+    """
+    Пагинация QuerySet с дополнительной информацией
+    """
+    from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+    paginator = Paginator(queryset, per_page)
+
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    return {
+        'items': list(page_obj),
+        'pagination': {
+            'current_page': page_obj.number,
+            'total_pages': paginator.num_pages,
+            'total_items': paginator.count,
+            'per_page': per_page,
+            'has_next': page_obj.has_next(),
+            'has_previous': page_obj.has_previous(),
+            'next_page': page_obj.next_page_number() if page_obj.has_next() else None,
+            'previous_page': page_obj.previous_page_number() if page_obj.has_previous() else None,
+        }
+    }
