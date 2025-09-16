@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate
 from django.db.models import Q
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -24,38 +24,59 @@ from apps.common.permissions import CanManageUsers, IsOwnerOrReadOnly
 from apps.common.utils import get_client_ip
 
 
-class CustomTokenObtainPairView(TokenObtainPairView):
+class CustomTokenObtainPairView(APIView):
     """
     Кастомный view для получения JWT токенов
     """
-    serializer_class = CustomTokenObtainPairSerializer
+    permission_classes = [permissions.AllowAny]
     
     def post(self, request, *args, **kwargs):
-        """Переопределяем POST для логирования входа"""
-        serializer = self.get_serializer(data=request.data)
-        
+        """Логин пользователя"""
         try:
-            serializer.is_valid(raise_exception=True)
+            username_or_email = request.data.get('email') or request.data.get('username')
+            password = request.data.get('password')
             
-            # Логируем успешный вход
-            user_data = serializer.validated_data.get('user', {})
-            if user_data:
-                # Создаём/обновляем сессию пользователя
-                user = User.objects.get(id=user_data['id'])
-                session_key = request.session.session_key or request.META.get('HTTP_X_SESSION_ID', '')
-                
-                if session_key:
-                    UserSession.objects.update_or_create(
-                        user=user,
-                        session_key=session_key,
-                        defaults={
-                            'ip_address': get_client_ip(request),
-                            'user_agent': request.META.get('HTTP_USER_AGENT', ''),
-                            'is_active': True
-                        }
-                    )
+            if not username_or_email or not password:
+                return Response(
+                    {'error': 'Email/Username и пароль обязательны.'}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
             
-            return Response(serializer.validated_data, status=status.HTTP_200_OK)
+            # Находим пользователя
+            try:
+                if '@' in username_or_email:
+                    user = User.objects.get(email=username_or_email)
+                else:
+                    user = User.objects.get(username=username_or_email)
+            except User.DoesNotExist:
+                return Response(
+                    {'error': 'Неверные учётные данные.'}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Аутентификация
+            user = authenticate(username=user.username, password=password)
+            if not user:
+                return Response(
+                    {'error': 'Неверные учётные данные.'}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Создаём токены
+            refresh = RefreshToken.for_user(user)
+            
+            return Response({
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'user': {
+                    'id': user.id,
+                    'username': user.username,
+                    'email': user.email,
+                    'first_name': user.first_name,
+                    'last_name': user.last_name,
+                    'role': user.role,
+                }
+            }, status=status.HTTP_200_OK)
             
         except Exception as e:
             return Response(
@@ -97,6 +118,40 @@ class LogoutView(APIView):
                 {"error": "Ошибка при выходе из системы"},
                 status=status.HTTP_400_BAD_REQUEST
             )
+
+
+class RegisterView(generics.CreateAPIView):
+    """
+    View для регистрации новых пользователей
+    """
+    queryset = User.objects.all()
+    serializer_class = UserCreateSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def perform_create(self, serializer):
+        """Создание пользователя с дополнительной логикой"""
+        user = serializer.save()
+        
+        # Создаём профиль пользователя
+        UserProfile.objects.get_or_create(user=user)
+        
+        return user
+    
+    def create(self, request, *args, **kwargs):
+        """Переопределяем create для возврата токенов"""
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        user = self.perform_create(serializer)
+        
+        # Генерируем токены для нового пользователя
+        refresh = RefreshToken.for_user(user)
+        
+        return Response({
+            'user': UserSerializer(user).data,
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }, status=status.HTTP_201_CREATED)
 
 
 class UserListCreateView(generics.ListCreateAPIView):
