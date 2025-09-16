@@ -11,6 +11,7 @@ app_name = 'users'
 # Authentication URLs
 auth_urlpatterns = [
     path('login/', views.CustomTokenObtainPairView.as_view(), name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('change-password/', views.ChangePasswordView.as_view(), name='change-password'),
