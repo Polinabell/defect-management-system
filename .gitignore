@@ -96,3 +96,47 @@ coverage.xml
 
 # Docker
 .dockerignore
+
+# Backups
+backups/
+*.backup
+*.dump
+*.sql.gz
+
+# Performance and optimization
+*.profile
+*.trace
+
+# Build optimization
+build-stats.json
+bundle-analyzer-report.html
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Production builds
+dist/
+build-production/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.csr
+ssl/
+
+# Monitoring
+.prometheus/
+.grafana/

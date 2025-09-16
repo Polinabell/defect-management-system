@@ -44,7 +44,7 @@ services:
 
   # Django приложение
   web:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: defect_management_web
@@ -54,12 +54,20 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/defect_management
       - REDIS_URL=redis://:redis_password@redis:6379/0
       - CELERY_BROKER_URL=redis://:redis_password@redis:6379/0
+      - API_RATE_LIMIT_REQUESTS=1000
+      - API_RATE_LIMIT_WINDOW=3600
+      - ENABLE_NOTIFICATIONS=true
+      - ENABLE_FILE_UPLOAD=true
+      - ENABLE_ANALYTICS=true
+      - ENABLE_AUDIT_LOG=true
+      - VERSION=1.0.0
     volumes:
       - ./backend:/app/backend
       - ./frontend:/app/frontend
       - media_volume:/app/media
       - static_volume:/app/static
       - logs_volume:/app/logs
+      - ./backups:/app/backups
     ports:
       - "8000:8000"
     depends_on:
