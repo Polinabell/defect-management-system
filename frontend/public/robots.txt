@@ -1,0 +1,18 @@
+# robots.txt for Defect Management System
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /static/
+Disallow: /media/
+Disallow: /login/
+Disallow: /register/
+Disallow: /reset-password/
+
+# Allow access to main pages
+Allow: /
+Allow: /about/
+Allow: /contact/
+Allow: /help/
+
+# Sitemap
+Sitemap: http://localhost:8000/sitemap.xml

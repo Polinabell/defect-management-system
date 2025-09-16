@@ -347,4 +347,17 @@ export const projectStatusColors = {
   cancelled: '#f44336',
 };
 
+// Дополнительные утилиты темы
+export const getStatusColor = (status: string): string => {
+  return defectStatusColors[status as keyof typeof defectStatusColors] || defectStatusColors.new;
+};
+
+export const getPriorityColor = (priority: string): string => {
+  return priorityColors[priority as keyof typeof priorityColors] || priorityColors.medium;
+};
+
+export const getProjectStatusColor = (status: string): string => {
+  return projectStatusColors[status as keyof typeof projectStatusColors] || projectStatusColors.planning;
+};
+
 export default theme;
