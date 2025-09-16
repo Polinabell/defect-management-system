@@ -1,0 +1,33 @@
+# Базовые зависимости Django проекта
+Django==4.2.7
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+django-filter==23.3
+django-extensions==3.2.3
+
+# База данных
+psycopg2-binary==2.9.8
+redis==5.0.1
+
+# Аутентификация и безопасность
+djangorestframework-simplejwt==5.3.0
+bcrypt==4.0.1
+python-decouple==3.8
+
+# Файлы и медиа
+Pillow==10.1.0
+python-magic==0.4.27
+
+# Утилиты
+celery==5.3.4
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Валидация и сериализация
+marshmallow==3.20.1
+django-phonenumber-field==7.2.0
+phonenumbers==8.13.25
+
+# Логирование и мониторинг
+django-structlog==5.0.0
+structlog==23.2.0
