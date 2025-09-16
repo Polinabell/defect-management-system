@@ -38,7 +38,7 @@ wait_for_db() {
         
         log "Проверка подключения к $DB_HOST:$DB_PORT"
         
-        /wait-for-it.sh "$DB_HOST:$DB_PORT" --timeout=60 --strict -- log "База данных доступна!"
+        /wait-for-it.sh "$DB_HOST:$DB_PORT" --timeout=60 --strict -- echo "База данных доступна!"
     else
         warn "DATABASE_URL не задан, пропускаем ожидание БД"
     fi
@@ -63,7 +63,7 @@ wait_for_redis() {
         
         log "Проверка подключения к Redis $REDIS_HOST:$REDIS_PORT"
         
-        /wait-for-it.sh "$REDIS_HOST:$REDIS_PORT" --timeout=30 --strict -- log "Redis доступен!"
+        /wait-for-it.sh "$REDIS_HOST:$REDIS_PORT" --timeout=30 --strict -- echo "Redis доступен!"
     else
         warn "REDIS_URL не задан, пропускаем ожидание Redis"
     fi
