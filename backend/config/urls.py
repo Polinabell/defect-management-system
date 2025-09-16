@@ -7,6 +7,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import JsonResponse
+from django.shortcuts import render
 from rest_framework import status
 
 def health_check(request):
@@ -17,25 +18,32 @@ def health_check(request):
         'environment': getattr(settings, 'ENVIRONMENT', 'unknown')
     })
 
+def serve_frontend(request):
+    """Обслуживание фронтенда React"""
+    return render(request, 'index.html')
+
 # API patterns
 api_patterns = [
-    path('auth/', include('apps.users.urls')),
-    path('users/', include('apps.users.urls')),
-    path('projects/', include('apps.projects.urls')),
-    path('defects/', include('apps.defects.urls')),
-    path('reports/', include('apps.reports.urls')),
+    # path('auth/', include('apps.users.urls')),
+    # path('users/', include('apps.users.urls')),
+    # path('projects/', include('apps.projects.urls')),
+    # path('defects/', include('apps.defects.urls')),
+    # path('reports/', include('apps.reports.urls')),
 ]
 
 # Main URL patterns
 urlpatterns = [
     # Admin
     path('admin/', admin.site.urls),
-    
+
     # Health check
     path('health/', health_check, name='health-check'),
-    
+
     # API v1
     path('api/v1/', include(api_patterns)),
+
+    # Frontend (главная страница)
+    path('', serve_frontend, name='frontend'),
 ]
 
 # Media files in development

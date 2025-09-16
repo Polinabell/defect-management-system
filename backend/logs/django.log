@@ -653,3 +653,100 @@ INFO 2025-09-15 19:17:41,241 basehttp 9760 13824 "GET /admin/ HTTP/1.1" 302 0
 INFO 2025-09-15 19:17:41,263 basehttp 9760 13824 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 18379
 INFO 2025-09-15 19:17:43,252 basehttp 9760 13824 "GET / HTTP/1.1" 200 214
 INFO 2025-09-15 19:35:57,341 autoreload 9760 11940 C:\Users\БОГ\Documents\GitHub\defect-management-system\backend\apps\users\admin.py changed, reloading.
+WARNING 2025-09-15 23:59:01,398 signals 31608 22340 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-15 23:59:24,456 signals 15812 14892 model_utils не установлен, детальное отслеживание изменений недоступно
+WARNING 2025-09-16 00:01:25,813 signals 11156 17384 model_utils не установлен, детальное отслеживание изменений недоступно
+INFO 2025-09-16 00:03:49,963 autoreload 20584 20984 Watching for file changes with StatReloader
+INFO 2025-09-16 00:20:18,502 autoreload 15008 17116 Watching for file changes with StatReloader
+INFO 2025-09-16 13:19:30,887 autoreload 23492 8952 Watching for file changes with StatReloader
+WARNING 2025-09-16 13:24:21,211 log 23492 20796 Not Found: /
+WARNING 2025-09-16 13:24:21,214 basehttp 23492 20796 "GET / HTTP/1.1" 404 2547
+WARNING 2025-09-16 13:24:22,739 log 23492 20796 Not Found: /favicon.ico
+WARNING 2025-09-16 13:24:22,740 basehttp 23492 20796 "GET /favicon.ico HTTP/1.1" 404 2598
+INFO 2025-09-16 13:26:26,548 autoreload 23492 8952 C:\Project1SPO\defect-management-system\backend\config\urls.py changed, reloading.
+INFO 2025-09-16 13:26:26,582 autoreload 15008 17116 C:\Project1SPO\defect-management-system\backend\config\urls.py changed, reloading.
+INFO 2025-09-16 13:26:52,982 autoreload 20668 12752 Watching for file changes with StatReloader
+INFO 2025-09-16 13:27:08,873 autoreload 20668 12752 C:\Project1SPO\defect-management-system\backend\config\urls.py changed, reloading.
+INFO 2025-09-16 13:27:35,485 autoreload 26708 25092 Watching for file changes with StatReloader
+INFO 2025-09-16 13:30:41,917 autoreload 26708 25092 C:\Project1SPO\defect-management-system\backend\config\settings\base.py changed, reloading.
+INFO 2025-09-16 13:31:11,660 autoreload 23456 29872 Watching for file changes with StatReloader
+INFO 2025-09-16 13:31:39,871 basehttp 23456 19124 "GET / HTTP/1.1" 200 989
+INFO 2025-09-16 13:31:42,930 basehttp 23456 19124 "GET /static/css/main.416d3cef.css HTTP/1.1" 200 2387
+INFO 2025-09-16 13:31:42,968 basehttp 23456 26752 "GET /static/js/main.75af2c0b.js HTTP/1.1" 200 860971
+WARNING 2025-09-16 13:31:44,285 log 23456 3696 Not Found: /manifest.json
+WARNING 2025-09-16 13:31:44,287 basehttp 23456 3696 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:31:45,117 log 23456 11508 Not Found: /manifest.json
+WARNING 2025-09-16 13:31:45,140 basehttp 23456 11508 "GET /manifest.json HTTP/1.1" 404 2721
+INFO 2025-09-16 13:31:45,164 basehttp 23456 11508 - Broken pipe from ('127.0.0.1', 58368)
+WARNING 2025-09-16 13:31:47,161 log 23456 3696 Not Found: /manifest.json
+WARNING 2025-09-16 13:31:47,162 basehttp 23456 3696 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:31:51,222 log 23456 3696 Not Found: /manifest.json
+WARNING 2025-09-16 13:31:51,223 basehttp 23456 3696 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:31:59,261 log 23456 3696 Not Found: /manifest.json
+WARNING 2025-09-16 13:31:59,262 basehttp 23456 3696 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:32:15,299 log 23456 3696 Not Found: /manifest.json
+WARNING 2025-09-16 13:32:15,300 basehttp 23456 3696 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:32:47,731 log 23456 15548 Not Found: /manifest.json
+WARNING 2025-09-16 13:32:47,732 basehttp 23456 15548 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:33:51,788 log 23456 15548 Not Found: /manifest.json
+WARNING 2025-09-16 13:33:51,792 basehttp 23456 15548 "GET /manifest.json HTTP/1.1" 404 2721
+INFO 2025-09-16 13:34:07,769 basehttp 23456 16112 "GET / HTTP/1.1" 200 989
+INFO 2025-09-16 13:35:06,150 basehttp 23456 16112 "GET / HTTP/1.1" 200 989
+WARNING 2025-09-16 13:35:07,696 log 23456 15548 Not Found: /manifest.json
+WARNING 2025-09-16 13:35:07,700 basehttp 23456 15548 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:36:00,143 log 23456 30532 Not Found: /manifest.json
+WARNING 2025-09-16 13:36:00,145 basehttp 23456 30532 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:40:16,608 log 23456 20420 Not Found: /manifest.json
+WARNING 2025-09-16 13:40:16,612 basehttp 23456 20420 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:45:17,031 log 23456 25440 Not Found: /manifest.json
+WARNING 2025-09-16 13:45:17,046 basehttp 23456 25440 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:50:17,411 log 23456 16440 Not Found: /manifest.json
+WARNING 2025-09-16 13:50:17,411 basehttp 23456 16440 "GET /manifest.json HTTP/1.1" 404 2721
+INFO 2025-09-16 13:53:11,455 basehttp 23456 27752 "GET /health/ HTTP/1.1" 200 67
+INFO 2025-09-16 13:54:31,800 basehttp 23456 22548 "GET / HTTP/1.1" 200 989
+WARNING 2025-09-16 13:54:32,641 log 23456 7424 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:32,642 basehttp 23456 7424 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:34,679 log 23456 7424 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:34,680 basehttp 23456 7424 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:34,760 log 23456 7424 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:34,762 basehttp 23456 7424 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:39,137 log 23456 11232 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:39,141 basehttp 23456 11232 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:39,420 log 23456 19828 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:39,421 basehttp 23456 19828 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:47,511 log 23456 19828 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:47,514 basehttp 23456 19828 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:50,846 log 23456 19828 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:50,849 basehttp 23456 19828 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:53,996 log 23456 19828 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:53,998 basehttp 23456 19828 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:54:58,979 log 23456 4432 Not Found: /manifest.json
+WARNING 2025-09-16 13:54:58,979 basehttp 23456 4432 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:01,724 log 23456 4432 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:01,726 basehttp 23456 4432 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:03,585 log 23456 4432 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:03,586 basehttp 23456 4432 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:04,376 log 23456 4432 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:04,378 basehttp 23456 4432 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:06,905 log 23456 4432 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:06,906 basehttp 23456 4432 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:13,661 log 23456 30688 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:13,771 basehttp 23456 30688 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:17,941 log 23456 29476 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:17,941 basehttp 23456 29476 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:22,117 log 23456 29476 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:22,118 basehttp 23456 29476 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:28,642 log 23456 3276 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:28,643 basehttp 23456 3276 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:31,524 log 23456 3276 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:31,526 basehttp 23456 3276 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:35,984 log 23456 19428 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:35,985 basehttp 23456 19428 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:36,032 log 23456 19428 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:36,033 basehttp 23456 19428 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:55:49,619 log 23456 22880 Not Found: /manifest.json
+WARNING 2025-09-16 13:55:49,621 basehttp 23456 22880 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:56:41,769 log 23456 23836 Not Found: /manifest.json
+WARNING 2025-09-16 13:56:41,972 basehttp 23456 23836 "GET /manifest.json HTTP/1.1" 404 2721
+WARNING 2025-09-16 13:58:50,313 log 23456 9692 Not Found: /manifest.json
+WARNING 2025-09-16 13:58:50,313 basehttp 23456 9692 "GET /manifest.json HTTP/1.1" 404 2721

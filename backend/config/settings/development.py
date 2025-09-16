@@ -9,17 +9,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Development specific apps
-INSTALLED_APPS += [
-    'debug_toolbar',
-    'silk',
-    'django_extensions',
-]
+# INSTALLED_APPS += []
 
 # Development middleware
-MIDDLEWARE += [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'silk.middleware.SilkMiddleware',
-]
+# MIDDLEWARE += []
 
 # Debug toolbar settings
 INTERNAL_IPS = [
