@@ -1,66 +1,71 @@
-/**
- * Главный компонент приложения
- */
-
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, Box, Toolbar } from '@mui/material';
 import { Provider } from 'react-redux';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { SnackbarProvider } from 'notistack';
-import { HelmetProvider } from 'react-helmet-async';
-
 import { store } from './store';
-import { theme } from './theme';
-import { AppRoutes } from './routes';
-import { AuthProvider } from './contexts/AuthContext';
-import { LoadingProvider } from './contexts/LoadingContext';
-import { NotificationProvider } from './contexts/NotificationContext';
-import ErrorBoundary from './components/common/ErrorBoundary';
+import theme from './theme';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import HomePage from './pages/HomePage';
+import DefectsPage from './pages/DefectsPage';
 
-// Настройка React Query
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 2,
-      refetchOnWindowFocus: false,
-      staleTime: 5 * 60 * 1000, // 5 минут
-    },
-  },
-});
+function App() {
+  const [sidebarOpen, setSidebarOpen] = React.useState(true);
 
-const App: React.FC = () => {
+  const handleSidebarClose = () => {
+    setSidebarOpen(false);
+  };
+
   return (
-    <ErrorBoundary>
-      <HelmetProvider>
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <SnackbarProvider
-                maxSnack={3}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                autoHideDuration={5000}
-              >
-                <Router>
-                  <AuthProvider>
-                    <LoadingProvider>
-                      <NotificationProvider>
-                        <AppRoutes />
-                      </NotificationProvider>
-                    </LoadingProvider>
-                  </AuthProvider>
-                </Router>
-              </SnackbarProvider>
-            </ThemeProvider>
-          </QueryClientProvider>
-        </Provider>
-      </HelmetProvider>
-    </ErrorBoundary>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Box sx={{ display: 'flex' }}>
+            <Header />
+            <Sidebar open={sidebarOpen} onClose={handleSidebarClose} />
+            
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                p: 3,
+                width: { sm: `calc(100% - 240px)` },
+                ml: { sm: '240px' },
+              }}
+            >
+              <Toolbar />
+              
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/dashboard" element={<HomePage />} />
+                <Route path="/defects" element={<DefectsPage />} />
+                <Route path="/projects" element={
+                  <Box sx={{ p: 3, textAlign: 'center' }}>
+                    <h2>🏢 Проекты (в разработке)</h2>
+                    <p>Страница управления проектами будет добавлена позже.</p>
+                  </Box>
+                } />
+                <Route path="/reports" element={
+                  <Box sx={{ p: 3, textAlign: 'center' }}>
+                    <h2>📊 Отчёты (в разработке)</h2>
+                    <p>Страница отчётов будет добавлена позже.</p>
+                  </Box>
+                } />
+                <Route path="/users" element={
+                  <Box sx={{ p: 3, textAlign: 'center' }}>
+                    <h2>👥 Пользователи (в разработке)</h2>
+                    <p>Страница управления пользователями будет добавлена позже.</p>
+                  </Box>
+                } />
+              </Routes>
+            </Box>
+          </Box>
+        </Router>
+      </ThemeProvider>
+    </Provider>
   );
-};
+}
 
 export default App;
