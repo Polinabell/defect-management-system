@@ -5,6 +5,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Project, ProjectMember, ProjectStage, ProjectTemplate, ProjectStageTemplate
+from apps.common.models import Priority
 
 User = get_user_model()
 
@@ -377,7 +378,7 @@ class ProjectSearchSerializer(serializers.Serializer):
         required=False
     )
     priority = serializers.MultipleChoiceField(
-        choices=Project.Priority.choices,
+        choices=Priority.choices,
         required=False
     )
     manager = serializers.PrimaryKeyRelatedField(
